@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>WebSQLite</display-name>
+    <servlet>
+        <servlet-name>InitDBServlet</servlet-name>
+        <servlet-class>servlets.InitDBServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DBServlet</servlet-name>
+        <servlet-class>servlets.DBServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteServlet</servlet-name>
+        <servlet-class>servlets.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InitDBServlet</servlet-name>
+        <url-pattern>/initDBServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DBServlet</servlet-name>
+        <url-pattern>/dBServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteServlet</servlet-name>
+        <url-pattern>/deleteServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
