@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
         
 public class LoginServlet extends HttpServlet {
 
@@ -26,7 +27,11 @@ public class LoginServlet extends HttpServlet {
         try {
             ResultSet rs = statement.executeQuery("SELECT COUNT(*) as exist FROM usuarios WHERE id_usuario = '" + username + "' AND password = '" + password + "'");
             rs.next();
-            if(rs.getInt("exist") == 1){response.sendRedirect("menu.jsp");}
+            if(rs.getInt("exist") == 1){
+                HttpSession session = request.getSession();
+		session.setAttribute("user", username);
+                session.setMaxInactiveInterval(30*60);
+                response.sendRedirect("menu.jsp");}
             else {
                 response.sendError(401, "Get out!");
             }
