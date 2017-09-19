@@ -1,9 +1,3 @@
-<%-- 
-    Document   : menu
-    Created on : 19-sep-2017, 16:44:30
-    Author     : 1185191
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
 if(session.getAttribute("user") == null){
@@ -14,9 +8,16 @@ if(session.getAttribute("user") == null){
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Menu</title>
+        <title>Home</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <nav>
+            <ul>
+                <li><a href="altaVuelo.jsp"/>Alta vuelo</li>
+                <li><a href="altaHotel.jsp"/>Alta hotel</li>
+                <li><a href="buscarVuelo.jsp"/>Buscar vuelo</li>
+                <li><a href="buscarHotel.jsp"/>Buscar hotel</li>
+            </ul>
+        </nav>
     </body>
 </html>
