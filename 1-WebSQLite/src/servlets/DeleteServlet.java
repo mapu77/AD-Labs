@@ -73,6 +73,6 @@ public class DeleteServlet extends HttpServlet {
             }
         }
         response.setStatus(200);
-        doGet(request, response);
+        new DBServlet().doGet(request, response);
     }
 }

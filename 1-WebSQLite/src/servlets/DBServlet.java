@@ -105,7 +105,7 @@ public class DBServlet extends HttpServlet {
                 out.write("<td>" + resultSet.getString("calle") + " " + resultSet.getInt("numero") + ", "
                         + resultSet.getString("codigo_postal") + " " + resultSet.getString("ciudad") + "</td>");
                 out.write("<td>" + resultSet.getInt("numb_hab") + "</td>");
-                if (delete) out.write("<th><a href='deleteServlet?id="+resultSet.getInt("id_hotel")+"'>Eliminar</a></th>");
+                if (delete) out.write("<th><a href='deleteServlet?id_hotel="+resultSet.getInt("id_hotel")+"'>Eliminar</a></th>");
                 out.write("</tr>");
             }
             out.write("</table>");
