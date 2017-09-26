@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <head>
@@ -6,6 +5,7 @@
         <title>ERROR!</title>
     </head>
     <body>
-        <h1>Sorry tete</h1>
+        <h1>An error occurred</h1>
+        <span>${requestScope['javax.servlet.error.message']}</span>
     </body>
 </html>

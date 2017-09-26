@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 session.setMaxInactiveInterval(30*60);
                 response.sendRedirect("menu.jsp");}
             else {
-                response.sendError(401, "Get out!");
+                response.sendError(401, "Unauthorized access");
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);

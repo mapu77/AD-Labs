@@ -75,7 +75,7 @@ public class GestionVuelosServlet extends HttpServlet {
             response.setStatus(200);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500);
+            response.sendError(500, "Error SQL, try to restart the database");
         }
     }
 
@@ -98,7 +98,7 @@ public class GestionVuelosServlet extends HttpServlet {
             response.sendRedirect("menu.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500);
+            response.sendError(500, "Error SQL, try to restart the database");
         }
     }
 
