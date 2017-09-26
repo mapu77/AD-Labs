@@ -14,6 +14,10 @@
         <servlet-name>GestionVuelosServlet</servlet-name>
         <servlet-class>servlets.GestionVuelosServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GestionHotelesServlet</servlet-name>
+        <servlet-class>servlets.GestionHotelesServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -21,6 +25,10 @@
     <servlet-mapping>
         <servlet-name>GestionVuelosServlet</servlet-name>
         <url-pattern>/GestionVuelosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GestionHotelesServlet</servlet-name>
+        <url-pattern>/GestionHotelesServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/web/login.jsp</file>
+            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/src/java/utils/GestorVuelos.java</file>
             <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/web/menu.jsp</file>
-            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/web/WEB-INF/web.xml</file>
+            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/web/buscarVuelo.jsp</file>
+            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/web/altaVuelo.jsp</file>
+            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/src/java/servlets/GestionVuelosServlet.java</file>
             <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/src/java/servlets/LoginServlet.java</file>
+            <file>file:/F:/windows/netbeans_projects/AD-Labs/2-TravelAgency/src/java/database/MyDB.java</file>
         </group>
     </open-files>
 </project-private>
