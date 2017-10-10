@@ -22,7 +22,7 @@ public class GestionVuelosServlet extends HttpServlet {
         String ciudadOrigen = request.getParameter("ciudad_origen").equals("") ? null : request.getParameter("ciudad_origen");
         String ciudadDestino = request.getParameter("ciudad_destino").equals("") ? null : request.getParameter("ciudad_destino");
         String companyia = request.getParameter("companyia").equals("") ? null : request.getParameter("companyia");
-        Statement statement = MyDB.getStatment();
+        Statement statement = MyDB.getStatement();
 
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM vuelos WHERE");
@@ -88,7 +88,7 @@ public class GestionVuelosServlet extends HttpServlet {
         String hora_salida = request.getParameter("hora_salida");
         String destino = request.getParameter("destino");
         String hora_llegada = request.getParameter("hora_llegada");
-        Statement statement = MyDB.getStatment();
+        Statement statement = MyDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery("SELECT MAX(id_vuelo) as max_id_vuelo FROM vuelos");
             rs.next();

@@ -14,7 +14,7 @@ public class MyDB {
     private static Statement statement;
     private static MyDB db;
     
-    public static Statement getStatment() {
+    public static Statement getStatement() {
         if (db.connection != null) {
             return db.statement;
         } else {

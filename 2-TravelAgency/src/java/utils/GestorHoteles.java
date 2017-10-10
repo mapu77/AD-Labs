@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class GestorHoteles {
  
     public List<String> getCadenas() {
-        Statement statment = MyDB.getStatment();
+        Statement statment = MyDB.getStatement();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT cadena FROM hoteles;");
             List<String> cadenas = new ArrayList<>();
@@ -27,7 +27,7 @@ public class GestorHoteles {
     }
     
     public List<String> getCiudades() {
-        Statement statment = MyDB.getStatment();
+        Statement statment = MyDB.getStatement();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT ciudad FROM hoteles");
             List<String> ciudades = new ArrayList<>();

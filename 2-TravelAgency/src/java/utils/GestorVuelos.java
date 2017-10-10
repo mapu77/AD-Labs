@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 public class GestorVuelos {
 
     public List<String> getCompanyias() {
-        Statement statment = MyDB.getStatment();
+        Statement statment = MyDB.getStatement();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT companyia FROM vuelos;");
             List<String> companyias = new ArrayList<>();
@@ -27,7 +27,7 @@ public class GestorVuelos {
     }
     
     public List<String> getCiudades() {
-        Statement statment = MyDB.getStatment();
+        Statement statment = MyDB.getStatement();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT ciudad FROM (SELECT origen AS ciudad FROM vuelos UNION SELECT destino AS ciudad FROM vuelos) as mytable");
             List<String> ciudades = new ArrayList<>();

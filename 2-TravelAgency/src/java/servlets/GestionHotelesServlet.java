@@ -29,7 +29,7 @@ public class GestionHotelesServlet extends HttpServlet {
         String nombre = request.getParameter("nombre").equals("") ? null : request.getParameter("nombre");
         String cadena = request.getParameter("cadena").equals("") ? null : request.getParameter("cadena");
         String ciudad = request.getParameter("ciudad").equals("") ? null : request.getParameter("ciudad");
-        Statement statement = MyDB.getStatment();
+        Statement statement = MyDB.getStatement();
 
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM hoteles WHERE");
@@ -110,7 +110,7 @@ public class GestionHotelesServlet extends HttpServlet {
         String provincia = request.getParameter("provincia");
         String pais = request.getParameter("pais");
         Integer num_hab = Integer.valueOf(request.getParameter("num_hab"));
-        Statement statement = MyDB.getStatment();
+        Statement statement = MyDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery("SELECT MAX(id_hotel) as max_id_hotel FROM hoteles");
             rs.next();
