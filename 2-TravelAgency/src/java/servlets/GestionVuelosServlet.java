@@ -95,7 +95,7 @@ public class GestionVuelosServlet extends HttpServlet {
             Integer id_vuelo = rs.getInt("max_id_vuelo") + 1;
             statement.executeUpdate("insert into vuelos values(" + id_vuelo + ", '" + numVuelo + "', '" + companyia + "','" + origen + "','" + hora_salida + "','" + destino + "','" + hora_llegada + "')");
             response.setStatus(201);
-            response.sendRedirect("menu.jsp");
+            response.sendRedirect("home.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "Error SQL, try to restart the database");
