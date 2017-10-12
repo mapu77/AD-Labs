@@ -59,7 +59,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><p class="navbar-text">Signed in as ${username}</p></li>
-                <li><a href="#" class="navbar-link" style="logout hov" id="logout">Logout</a></li>
+                <li><a class="navbar-link" href="logoutServlet" role="button">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

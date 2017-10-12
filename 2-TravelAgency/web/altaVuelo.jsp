@@ -22,40 +22,48 @@
                 <form method="POST" action="GestionVuelosServlet">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-plane"></span>
-                                <input type="text" class="form-control" placeholder="Nº Vuelo" name="num_vuelo">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-plane"></span>
+                                    <input type="text" class="form-control" placeholder="Nº Vuelo" name="num_vuelo">
+                                </div>
                             </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
-                                <input type="text" class="form-control" placeholder="Companyia" name="companyia">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
+                                    <input type="text" class="form-control" placeholder="Ciudad origen" name="origen"
+                                           required>
+                                </div>
                             </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
-                                <input type="text" class="form-control" placeholder="Ciudad origen" name="origen">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-time"></span>
+                                    <input type="time" class="form-control" placeholder="Hora de salida"
+                                           name="hora_salida" required>
+                                </div>
                             </div>
-                            <br/>
                         </div>
-
                         <div class="col-sm-6">
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-time"></span>
-                                <input type="time" class="form-control" placeholder="Hora de salida" name="hora_salida">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
+                                    <input type="text" class="form-control" placeholder="Companyia" name="companyia">
+                                </div>
                             </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
-                                <input type="text" class="form-control" placeholder="Ciudad destino" name="destino">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
+                                    <input type="text" class="form-control" placeholder="Ciudad destino" name="destino"
+                                           required>
+                                </div>
                             </div>
-                            <br/>
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-time"></span>
-                                <input type="time" class="form-control" placeholder="Hora de llegada"
-                                       name="hora_llegada">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon glyphicon glyphicon-time"></span>
+                                    <input type="time" class="form-control" placeholder="Hora de llegada"
+                                           name="hora_llegada" required>
+                                </div>
                             </div>
-                            <br/>
                             <button class="btn btn-primary pull-right" type="submit">Alta vuelo</button>
                         </div>
                     </div>

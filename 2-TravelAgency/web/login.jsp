@@ -33,19 +33,25 @@
     <p>Welcome to the new revolutionary travel agency web application.</p>
     <p>Here you will find flights and hotels to book.</p>
     <div class="container row">
-        <div class="col-md-4">
+        <div class="col-md-4 col">
             <form method="POST" action="loginServlet" class="form-signin">
-                <div class="input-group">
-                    <span class="input-group-addon glyphicon glyphicon-user"></span>
-                    <input type="text" class="form-control" placeholder="Username" name="username">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-user"></span>
+                        <input type="text" class="form-control" placeholder="Username" name="username" required>
+                    </div>
                 </div>
-                <br/>
-                <div class="input-group">
-                    <span class="input-group-addon glyphicon glyphicon-lock"></span>
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon glyphicon glyphicon-lock"></span>
+                        <input type="password" class="form-control" placeholder="Password" name="password" required>
+                    </div>
                 </div>
-                <br/>
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                <div class="form-group">
+                    <div class="">
+                        <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
