@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
-                                    <input type="text" class="form-control" placeholder="Companyia" name="companyia">
+                                    <input type="text" class="form-control" placeholder="Compañia" name="companyia">
                                 </div>
                             </div>
                             <div class="form-group">

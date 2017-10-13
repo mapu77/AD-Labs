@@ -94,6 +94,7 @@ public class GestionVuelosServlet extends HttpServlet {
             rs.next();
             Integer id_vuelo = rs.getInt("max_id_vuelo") + 1;
             statement.executeUpdate("insert into vuelos values(" + id_vuelo + ", '" + numVuelo + "', '" + companyia + "','" + origen + "','" + hora_salida + "','" + destino + "','" + hora_llegada + "')");
+            request.getSession().setAttribute("success", "Vuelo creado correctamente");
             response.setStatus(201);
             response.sendRedirect("home.jsp");
         } catch (SQLException ex) {
