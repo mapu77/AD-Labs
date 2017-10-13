@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,9 +21,9 @@ public class GestionVuelosServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String numVuelo = request.getParameter("numero_vuelo").equals("") ? null : request.getParameter("numero_vuelo");
-        String ciudadOrigen = request.getParameter("ciudad_origen").equals("") ? null : request.getParameter("ciudad_origen");
-        String ciudadDestino = request.getParameter("ciudad_destino").equals("") ? null : request.getParameter("ciudad_destino");
-        String companyia = request.getParameter("companyia").equals("") ? null : request.getParameter("companyia");
+        String ciudadOrigen = request.getParameter("ciudad_origen").equals("Todas") ? null : request.getParameter("ciudad_origen");
+        String ciudadDestino = request.getParameter("ciudad_destino").equals("Todas") ? null : request.getParameter("ciudad_destino");
+        String companyia = request.getParameter("companyia").equals("Todas") ? null : request.getParameter("companyia");
         Statement statement = MyDB.getStatement();
 
         try {
@@ -40,39 +42,21 @@ public class GestionVuelosServlet extends HttpServlet {
             }
             sql.append(" 1=1");
             ResultSet rs = statement.executeQuery(sql.toString());
-            PrintWriter writer = response.getWriter();
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("<style>");
-            writer.println("table, th, td {border: 1px solid black;    border-collapse: collapse; padding: 10px}");
-            writer.println("</style>");
-            writer.println("</head>");
-            writer.println("<body>");
-            writer.println("<table>");
-            writer.println("<tr>");
-            writer.println("<th>Id Vuelo</th>");
-            writer.println("<th>Nº Vuelo</th>");
-            writer.println("<th>Compañia</th>");
-            writer.println("<th>Origen</th>");
-            writer.println("<th>Hora Salida</th>");
-            writer.println("<th>Destino</th>");
-            writer.println("<th>Hora Llegada</th>");
-            writer.println("</tr>");
-            while (rs.next()) {
-                writer.println("<tr>");
-                writer.println("<td>"+rs.getString("id_vuelo")+"</td>");
-                writer.println("<td>"+rs.getString("num_vuelo")+"</td>");
-                writer.println("<td>"+rs.getString("companyia")+"</td>");
-                writer.println("<td>"+rs.getString("origen")+"</td>");
-                writer.println("<td>"+rs.getString("hora_salida")+"</td>");
-                writer.println("<td>"+rs.getString("destino")+"</td>");
-                writer.println("<td>"+rs.getString("hora_llegada")+"</td>");
-                writer.println("</tr>");
+            List<List<String>> vuelosEncontrados = new ArrayList<>();
+            while(rs.next()){
+                List<String> vuelo = new ArrayList();
+                vuelo.add(rs.getString("id_vuelo"));
+                vuelo.add(rs.getString("num_vuelo"));
+                vuelo.add(rs.getString("companyia"));
+                vuelo.add(rs.getString("origen"));
+                vuelo.add(rs.getString("hora_salida"));
+                vuelo.add(rs.getString("destino"));
+                vuelo.add(rs.getString("hora_llegada"));
+                vuelosEncontrados.add(vuelo);
             }
-            writer.println("</table>");
-            writer.println("</body>");
-            writer.println("</html>");
+            request.setAttribute("vuelos", vuelosEncontrados);
             response.setStatus(200);
+            request.getRequestDispatcher("tablaVuelos.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "Error SQL, try to restart the database");

@@ -3,47 +3,71 @@
 <%@page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp");
+    }
     VueloUtils vueloUtils = new VueloUtils();
     List<String> companyias = vueloUtils.getCompanyias();
-    companyias.add(null);
+    companyias.add("Todas");
     List<String> ciudades = vueloUtils.getCiudades();
-    ciudades.add(null);
+    ciudades.add("Todas");
     pageContext.setAttribute("companyias", companyias);
     pageContext.setAttribute("ciudades", ciudades);
 %>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Buscar vuelos</title>
-</head>
-<body>
-<h1>Buscador de vuelos</h1>
-<form action="GestionVuelosServlet" method="GET">
-    <label>Número de vuelo</label> <br/>
-    <input type="text" name="numero_vuelo"> <br/><br/>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Buscar vuelos</title>
+    </head>
+    <body>
+        <div class="container">
+            <jsp:include page="menu.jsp"/>
+            <div id="content" style="padding-left: 20px; padding-right: 20px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Buscador de vuelos</h3>
+                    </div>
+                    <div class="panel-body container-fluid">
 
-    <label>Selecciona una ciudad de origen:</label>
-    <select name="ciudad_origen">
-        <c:forEach var="ciudad" items="${ciudades}">
-            <option value="${ciudad}">${ciudad}</option>
-        </c:forEach>
-    </select><br/>
+                        <form action="GestionVuelosServlet" method="GET">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon glyphicon glyphicon-plane"></span>
+                                            <input type="text" class="form-control" placeholder="Número de vuelo" name="numero_vuelo">
+                                        </div>
+                                    </div>
+                                    <label>Selecciona una compañia:</label>
+                                    <select class="form-control" name="companyia" >
+                                        <c:forEach var="companyia" items="${companyias}">
+                                            <option value="${companyia}">${companyia}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="col-sm-6">
+                                    <label>Selecciona una ciudad de origen:</label>
+                                    <select class="form-control" name="ciudad_origen">
+                                        <c:forEach var="ciudad" items="${ciudades}">
+                                            <option value="${ciudad}">${ciudad}</option>
+                                        </c:forEach>
+                                    </select></br>
 
-    <label>Selecciona una ciudad de destino:</label>
-    <select name="ciudad_destino">
-        <c:forEach var="ciudad" items="${ciudades}">
-            <option value="${ciudad}">${ciudad}</option>
-        </c:forEach>
-    </select><br/>
-
-    <label>Selecciona una compañia:</label>
-    <select name="companyia">
-        <c:forEach var="companyia" items="${companyias}">
-            <option value="${companyia}">${companyia}</option>
-        </c:forEach>
-    </select><br/>
-    <input type="submit" value="Buscar">
-</form>
-</body>
+                                    <label>Selecciona una ciudad de destino:</label>
+                                    <select class="form-control" name="ciudad_destino" >
+                                        <c:forEach var="ciudad" items="${ciudades}">
+                                            <option value="${ciudad}">${ciudad}</option>
+                                        </c:forEach>
+                                    </select></br>
+                                    <button class="btn btn-primary pull-right" type="submit">Buscar vuelo</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- TAULA amb els resultats -->
+    </body>
 </html>

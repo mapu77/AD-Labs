@@ -1,3 +1,4 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%
     String username = (String) session.getAttribute("user");
     pageContext.setAttribute("username", username);
