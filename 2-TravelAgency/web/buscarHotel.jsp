@@ -1,12 +1,12 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<%@page import="utils.GestorHoteles"%>
+<%@page import="utils.HotelUtils"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    GestorHoteles gestorHoteles = new GestorHoteles();
-    List<String> cadenas = gestorHoteles.getCadenas();
+    HotelUtils hotelUtils = new HotelUtils();
+    List<String> cadenas = hotelUtils.getCadenas();
     cadenas.add(null);
-    List<String> ciudades = gestorHoteles.getCiudades();
+    List<String> ciudades = hotelUtils.getCiudades();
     ciudades.add(null);
     pageContext.setAttribute("cadenas", cadenas);
     pageContext.setAttribute("ciudades", ciudades);

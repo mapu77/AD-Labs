@@ -1,12 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="utils.GestorVuelos" %>
+<%@page import="utils.VueloUtils" %>
 <%@page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%
-    GestorVuelos gestorVuelos = new GestorVuelos();
-    List<String> companyias = gestorVuelos.getCompanyias();
+    VueloUtils vueloUtils = new VueloUtils();
+    List<String> companyias = vueloUtils.getCompanyias();
     companyias.add(null);
-    List<String> ciudades = gestorVuelos.getCiudades();
+    List<String> ciudades = vueloUtils.getCiudades();
     ciudades.add(null);
     pageContext.setAttribute("companyias", companyias);
     pageContext.setAttribute("ciudades", ciudades);
