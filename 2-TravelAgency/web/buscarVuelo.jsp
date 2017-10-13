@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="utils.VueloUtils" %>
 <%@page import="java.util.List" %>
@@ -7,10 +8,14 @@
         response.sendRedirect("login.jsp");
     }
     VueloUtils vueloUtils = new VueloUtils();
-    List<String> companyias = vueloUtils.getCompanyias();
-    companyias.add("Todas");
-    List<String> ciudades = vueloUtils.getCiudades();
+    List<String> companyias = new ArrayList();
+   companyias.add("Todas");
+   companyias.addAll(vueloUtils.getCompanyias());
+
+    List<String> ciudades = new ArrayList();
     ciudades.add("Todas");
+    ciudades.addAll(vueloUtils.getCiudades());
+    
     pageContext.setAttribute("companyias", companyias);
     pageContext.setAttribute("ciudades", ciudades);
 %>
@@ -68,6 +73,5 @@
                 </div>
             </div>
         </div>
-        <!-- TAULA amb els resultats -->
     </body>
 </html>

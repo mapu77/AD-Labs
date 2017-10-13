@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,17 +21,17 @@ public class GestionHotelesServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre").equals("") ? null : request.getParameter("nombre");
-        String cadena = request.getParameter("cadena").equals("") ? null : request.getParameter("cadena");
-        String ciudad = request.getParameter("ciudad").equals("") ? null : request.getParameter("ciudad");
+        String cadena = request.getParameter("cadena").equals("Todas") ? null : request.getParameter("cadena");
+        String ciudad = request.getParameter("ciudad").equals("Todas") ? null : request.getParameter("ciudad");
         Statement statement = MyDB.getStatement();
 
         try {
@@ -45,45 +47,24 @@ public class GestionHotelesServlet extends HttpServlet {
             }
             sql.append(" 1=1");
             ResultSet rs = statement.executeQuery(sql.toString());
-            PrintWriter writer = response.getWriter();
-            writer.println("<html>");
-            writer.println("<head>");
-            writer.println("<style>");
-            writer.println("table, th, td {border: 1px solid black;    border-collapse: collapse; padding: 10px}");
-            writer.println("</style>");
-            writer.println("</head>");
-            writer.println("<body>");
-            writer.println("<table>");
-            writer.println("<tr>");
-            writer.println("<th>Id Hotel</th>");
-            writer.println("<th>Nombre hotel</th>");
-            writer.println("<th>Cadena</th>");
-            writer.println("<th>Nº habitaciones</th>");
-            writer.println("<th>Calle</th>");
-            writer.println("<th>Número</th>");
-            writer.println("<th>Código postal</th>");
-            writer.println("<th>Ciudad</th>");
-            writer.println("<th>Provincia</th>");
-            writer.println("<th>Pais</th>");
-            writer.println("</tr>");
+            List<List<String>> hotelesEncontrados = new ArrayList<>();
             while (rs.next()) {
-                writer.println("<tr>");
-                writer.println("<td>" + rs.getString("id_hotel") + "</td>");
-                writer.println("<td>" + rs.getString("nom_hotel") + "</td>");
-                writer.println("<td>" + rs.getString("cadena") + "</td>");
-                writer.println("<td>" + rs.getString("numb_hab") + "</td>");
-                writer.println("<td>" + rs.getString("calle") + "</td>");
-                writer.println("<td>" + rs.getString("numero") + "</td>");
-                writer.println("<td>" + rs.getString("codigo_postal") + "</td>");
-                writer.println("<td>" + rs.getString("ciudad") + "</td>");
-                writer.println("<td>" + rs.getString("provincia") + "</td>");
-                writer.println("<td>" + rs.getString("pais") + "</td>");
-                writer.println("</tr>");
+                List<String> hotel = new ArrayList();
+                hotel.add(rs.getString("id_hotel"));
+                hotel.add(rs.getString("nom_hotel"));
+                hotel.add(rs.getString("cadena"));
+                hotel.add(rs.getString("numb_hab"));
+                hotel.add(rs.getString("calle"));
+                hotel.add(rs.getString("numero"));
+                hotel.add(rs.getString("codigo_postal"));
+                hotel.add(rs.getString("ciudad"));
+                hotel.add(rs.getString("provincia"));
+                hotel.add(rs.getString("pais"));
+                hotelesEncontrados.add(hotel);
             }
-            writer.println("</table>");
-            writer.println("</body>");
-            writer.println("</html>");
+            request.setAttribute("hoteles", hotelesEncontrados);
             response.setStatus(200);
+            request.getRequestDispatcher("tablaHoteles.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "Error SQL, try to restart the database");
@@ -94,10 +75,10 @@ public class GestionHotelesServlet extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
