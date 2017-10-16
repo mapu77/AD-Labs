@@ -3,6 +3,7 @@
     if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp");
     }
+    session.removeAttribute("success");
 %>
 <!DOCTYPE html>
 <html>
@@ -60,7 +61,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="number" class="form-control" placeholder="Número" name="num">
+                                    <input type="number" class="form-control" placeholder="Número" name="num" min="0">
                                 </div>
                             </div>
                         </div>
@@ -113,11 +114,3 @@
 </div>
 </body>
 </html>
-
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker2').datetimepicker({
-            locale: 'ru'
-        });
-    });
-</script>

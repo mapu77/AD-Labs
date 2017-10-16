@@ -4,6 +4,10 @@
 <%@page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%
+    if (session.getAttribute("user") == null) {
+        response.sendRedirect("login.jsp");
+    }
+    pageContext.removeAttribute("success");
     HotelUtils hotelUtils = new HotelUtils();
     List<String> cadenas = new ArrayList();
     cadenas.add("Todas");

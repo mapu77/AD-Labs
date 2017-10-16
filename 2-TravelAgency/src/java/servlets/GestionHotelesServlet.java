@@ -67,7 +67,7 @@ public class GestionHotelesServlet extends HttpServlet {
             request.getRequestDispatcher("tablaHoteles.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500, "Error SQL, try to restart the database");
+            response.sendError(500, "This should not occur and it is not your fault");
 
         }
     }
@@ -83,27 +83,38 @@ public class GestionHotelesServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String nombre = request.getParameter("nombre");
-        String cadena = request.getParameter("cadena");
-        String calle = request.getParameter("calle");
+        String nombre = request.getParameter("nombre").equals("") ? null : request.getParameter("nombre");
+        String cadena = request.getParameter("cadena").equals("") ? null : request.getParameter("cadena");
+        String calle = request.getParameter("calle").equals("") ? null : request.getParameter("calle");
         Integer num = request.getParameter("num").equals("") ? null : Integer.valueOf(request.getParameter("num"));
-        String cp = request.getParameter("cp");
-        String ciudad = request.getParameter("ciudad");
-        String provincia = request.getParameter("provincia");
-        String pais = request.getParameter("pais");
+        String cp = request.getParameter("cp").equals("") ? null : request.getParameter("cp");
+        String ciudad = request.getParameter("ciudad").equals("") ? null : request.getParameter("ciudad");
+        String provincia = request.getParameter("provincia").equals("") ? null : request.getParameter("provincia");
+        String pais = request.getParameter("pais").equals("") ? null : request.getParameter("pais");
         Integer num_hab = request.getParameter("num_hab").equals("") ? null : Integer.valueOf(request.getParameter("num_hab"));
         Statement statement = MyDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery("SELECT MAX(id_hotel) as max_id_hotel FROM hoteles");
             rs.next();
             Integer id_hotel = rs.getInt("max_id_hotel") + 1;
-            statement.executeUpdate("insert into hoteles values(" + id_hotel + ", '" + nombre + "', '" + cadena + "'," + num_hab + ",'" + calle + "'," + num + ",'" + cp + "','" + ciudad + "','" + provincia + "','" + pais + "')");
+            StringBuilder sql = new StringBuilder("insert into hoteles values(" + id_hotel);
+            sql.append(nombre == null ? (", " + nombre) : (", '" + nombre + "'"));
+            sql.append(cadena == null ? (", " + cadena) : (", '" + cadena + "'"));
+            sql.append(", " + num_hab);
+            sql.append(calle == null ? (", " + calle) : (", '" + calle + "'"));
+            sql.append(", " + num);
+            sql.append(cp == null ? (", " + cp) : (", '" + cp + "'"));
+            sql.append(ciudad == null ? (", " + ciudad) : (", '" + ciudad + "'"));
+            sql.append(provincia == null ? (", " + provincia) : (", '" + provincia + "'"));
+            sql.append(pais == null ? (", " + pais) : (", '" + pais + "'"));
+            sql.append(")");
+            statement.executeUpdate(sql.toString());
             request.getSession().setAttribute("success", "Hotel creado correctamente");
             response.setStatus(201);
             response.sendRedirect("home.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500, "Error SQL, try to restart the database");
+            response.sendError(500, "This should not occur and in any case it is not your fault");
         }
     }
 

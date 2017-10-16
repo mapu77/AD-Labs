@@ -7,6 +7,7 @@
     if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp");
     }
+    pageContext.removeAttribute("success");
     VueloUtils vueloUtils = new VueloUtils();
     List<String> companyias = new ArrayList();
     companyias.add("Todas");

@@ -3,6 +3,7 @@
     if (session.getAttribute("user") == null) {
         response.sendRedirect("login.jsp");
     }
+    session.removeAttribute("success");
 %>
 <!DOCTYPE html>
 <html>
@@ -74,11 +75,3 @@
 </div>
 </body>
 </html>
-
-<script type="text/javascript">
-    $(function () {
-        $('#datetimepicker2').datetimepicker({
-            locale: 'ru'
-        });
-    });
-</script>

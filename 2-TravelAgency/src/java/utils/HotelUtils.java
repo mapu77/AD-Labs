@@ -14,7 +14,7 @@ public class HotelUtils {
     public List<String> getCadenas() {
         Statement statment = MyDB.getStatement();
         try {
-            ResultSet rs = statment.executeQuery("SELECT DISTINCT cadena FROM hoteles;");
+            ResultSet rs = statment.executeQuery("SELECT DISTINCT cadena FROM hoteles where cadena is not null ORDER BY cadena asc;");
             List<String> cadenas = new ArrayList<>();
             while (rs.next()) {
                 cadenas.add(rs.getString("cadena"));
@@ -29,7 +29,7 @@ public class HotelUtils {
     public List<String> getCiudades() {
         Statement statment = MyDB.getStatement();
         try {
-            ResultSet rs = statment.executeQuery("SELECT DISTINCT ciudad FROM hoteles");
+            ResultSet rs = statment.executeQuery("SELECT DISTINCT ciudad FROM hoteles where ciudad is not null ORDER BY ciudad asc");
             List<String> ciudades = new ArrayList<>();
             while (rs.next()) {
                 ciudades.add(rs.getString("ciudad"));

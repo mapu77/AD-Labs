@@ -43,7 +43,7 @@ public class GestionVuelosServlet extends HttpServlet {
             sql.append(" 1=1");
             ResultSet rs = statement.executeQuery(sql.toString());
             List<List<String>> vuelosEncontrados = new ArrayList<>();
-            while(rs.next()){
+            while (rs.next()) {
                 List<String> vuelo = new ArrayList();
                 vuelo.add(rs.getString("id_vuelo"));
                 vuelo.add(rs.getString("num_vuelo"));
@@ -59,31 +59,39 @@ public class GestionVuelosServlet extends HttpServlet {
             request.getRequestDispatcher("tablaVuelos.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500, "Error SQL, try to restart the database");
+            response.sendError(500, "This should not occur and it is not your fault");
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String numVuelo = request.getParameter("num_vuelo");
-        String companyia = request.getParameter("companyia");
-        String origen = request.getParameter("origen");
-        String hora_salida = request.getParameter("hora_salida");
-        String destino = request.getParameter("destino");
-        String hora_llegada = request.getParameter("hora_llegada");
+        String numVuelo = request.getParameter("num_vuelo").equals("") ? null : request.getParameter("num_vuelo");
+        String companyia = request.getParameter("companyia").equals("") ? null : request.getParameter("companyia");
+        String origen = request.getParameter("origen").equals("") ? null : request.getParameter("origen");
+        String hora_salida = request.getParameter("hora_salida").equals("") ? null : request.getParameter("hora_salida");
+        String destino = request.getParameter("destino").equals("") ? null : request.getParameter("destino");
+        String hora_llegada = request.getParameter("hora_llegada").equals("") ? null : request.getParameter("hora_llegada");
         Statement statement = MyDB.getStatement();
         try {
             ResultSet rs = statement.executeQuery("SELECT MAX(id_vuelo) as max_id_vuelo FROM vuelos");
             rs.next();
             Integer id_vuelo = rs.getInt("max_id_vuelo") + 1;
-            statement.executeUpdate("insert into vuelos values(" + id_vuelo + ", '" + numVuelo + "', '" + companyia + "','" + origen + "','" + hora_salida + "','" + destino + "','" + hora_llegada + "')");
+            StringBuilder sql = new StringBuilder("insert into vuelos values(" + id_vuelo);
+            sql.append(numVuelo == null ? (", " + numVuelo) : (", '" + numVuelo + "'"));
+            sql.append(companyia == null ? (", " + companyia) : (", '" + numVuelo + "'"));
+            sql.append(origen == null ? (", " + origen) : (", '" + origen + "'"));
+            sql.append(hora_salida == null ? (", " + hora_salida) : (", '" + hora_salida + "'"));
+            sql.append(destino == null ? (", " + destino) : (", '" + destino + "'"));
+            sql.append(hora_llegada == null ? (", " + hora_llegada) : (", '" + hora_llegada + "'"));
+            sql.append(")");
+            statement.executeUpdate(sql.toString());
             request.getSession().setAttribute("success", "Vuelo creado correctamente");
             response.setStatus(201);
             response.sendRedirect("home.jsp");
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500, "Error SQL, try to restart the database");
+            response.sendError(500, "This should not occur and in any case it is not your fault");
         }
     }
 

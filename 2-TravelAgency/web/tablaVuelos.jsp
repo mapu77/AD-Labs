@@ -15,29 +15,36 @@
     <body>
         <div class="container">
             <jsp:include page="menu.jsp"/>
-            <h2>Vuelos encontrados</h2>
-            <table class="table table-striped table-condensed">
-                <thead>
-                    <tr>
-                        <th>Id Vuelo</th>
-                        <th>Nº Vuelo</th>
-                        <th>Compañia</th>
-                        <th>Origen</th>
-                        <th>Hora Salida</th>
-                        <th>Destino</th>
-                        <th>Hora Llegada</th>
-                    </tr>
-                </thead>
-                <tbody class="table-hover">
-                <c:forEach var="vuelo" items="${vuelos}">
-                    <tr>
-                    <c:forEach var="dato" items="${vuelo}">
-                        <td><c:out value="${dato}"/></td>
-                    </c:forEach>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <c:choose>
+                <c:when test="${empty vuelos}">
+                    <h2>No hay resultados para su búsqueda</h2>
+                </c:when>
+                <c:otherwise>
+                    <h2>Vuelos encontrados</h2>
+                    <table class="table table-striped table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <th>Id Vuelo</th>
+                                <th>Nº Vuelo</th>
+                                <th>Compañia</th>
+                                <th>Origen</th>
+                                <th>Hora Salida</th>
+                                <th>Destino</th>
+                                <th>Hora Llegada</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="vuelo" items="${vuelos}">
+                                <tr>
+                                    <c:forEach var="dato" items="${vuelo}">
+                                        <td><c:out value="${dato}"/></td>
+                                    </c:forEach>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:otherwise>
+            </c:choose>
         </div>
     </body>
 </html>

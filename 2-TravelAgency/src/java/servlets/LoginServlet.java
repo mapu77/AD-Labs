@@ -33,11 +33,11 @@ public class LoginServlet extends HttpServlet {
                 session.setMaxInactiveInterval(30 * 60);
                 response.sendRedirect("home.jsp");
             } else {
-                response.sendError(401, "Unauthorized access");
+                response.sendError(401, "Your username or password are incorrect");
             }
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-            response.sendError(500, "Something went wrong");
+            response.sendError(500, "This should not occur and in any case it is not your fault");
         }
 
     }
