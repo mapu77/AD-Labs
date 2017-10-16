@@ -16,7 +16,7 @@
         <div class="container">
             <jsp:include page="menu.jsp"/>
             <h2>Vuelos encontrados</h2>
-            <table class="table table-striped">
+            <table class="table table-striped table-condensed">
                 <thead>
                     <tr>
                         <th>Id Vuelo</th>
@@ -28,7 +28,7 @@
                         <th>Hora Llegada</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-hover">
                 <c:forEach var="vuelo" items="${vuelos}">
                     <tr>
                     <c:forEach var="dato" items="${vuelo}">

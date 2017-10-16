@@ -16,7 +16,7 @@
         <div class="container">
             <jsp:include page="menu.jsp"/>
             <h2>Hoteles encontrados</h2>
-            <table class="table table-striped">
+            <table class="table table-striped table-condensed">
                 <thead>
                     <tr>
                         <th>Id Hotel</th>
@@ -31,7 +31,7 @@
                         <th>Pais</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-hover">
                 <c:forEach var="hotel" items="${hoteles}">
                     <tr>
                     <c:forEach var="dato" items="${hotel}">
