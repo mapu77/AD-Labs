@@ -1,0 +1,19 @@
+### Java template
+
+# Package Files #
+*.jar
+
+### JetBrains template
+.idea/
+target/
+*.iml
+lib
+build.xml
+
+### NetBeans template
+nbproject
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/

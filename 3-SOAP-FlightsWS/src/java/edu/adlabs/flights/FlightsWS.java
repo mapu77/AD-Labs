@@ -1,10 +1,11 @@
 package edu.adlabs.flights;
 
-import javax.jws.WebService;
+import edu.adlabs.database.MyDB;
+
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
-import javax.ejb.Stateless;
-import database.MyDB;
+import javax.jws.WebService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,12 +17,11 @@ import java.util.logging.Logger;
 public class FlightsWS {
 
     /**
-     * Dados un identificador de vuelo y una fecha, retorna el número de plazas
-     * que están libres.
+     * Dados un identificador de vuelo y una fecha, retorna el número de plazas que están libres.
      *
-     * @param id_vuelo
-     * @param fecha
-     * @return
+     * @param id_vuelo representa el identificador de vuelo
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @return el número de plazas libres en el vuelo
      */
     @WebMethod(operationName = "consulta_libres")
     public int consulta_libres(@WebParam(name = "id_vuelo") final int id_vuelo, @WebParam(name = "fecha") final int fecha) {
@@ -39,12 +39,16 @@ public class FlightsWS {
     }
 
     /**
-     * Dados un identificador de hotel y una fecha, reserva una habitación si quedan habitaciones libres (incrementa el número de habitaciones ocupadas en esa fecha en el hotel).
-     * Si es posible realizar la reserva, esta operación retorna el número de habitaciones ocupadas que hay en el hotel.
-     * Si no es posible realizar la reserva, esta operación retorna -1. 
-     * @param id_vuelo
-     * @param fecha
-     * @return 
+     * Dados un identificador de vuelo y una fecha, reserva una plaza si quedan plazas libres (incrementa el número de
+     * plazas ocupadas en un vuelo en una fecha.
+     *
+     * Si es posible realizar la reserva, esta operación retorna el número de plazas ocupadas que hay en el vuelo.
+     *
+     * Si no es posible realizar la reserva, esta operación retorna -1.
+     *
+     * @param id_vuelo representa el identificador de vuelo
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @return el número de plazas ocupadas en el vuelo
      */
     @WebMethod(operationName = "reserva_plaza")
     public int reserva_plaza(@WebParam(name = "id_vuelo") final int id_vuelo, @WebParam(name = "fecha") final int fecha) {
