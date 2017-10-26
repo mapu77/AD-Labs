@@ -18,6 +18,8 @@ public class FlightsWS {
 
     /**
      * Dados un identificador de vuelo y una fecha, retorna el número de plazas que están libres.
+     * 
+     * Retorna -1 si no hay información para el avión y/o la fecha en cuestión
      *
      * @param id_vuelo representa el identificador de vuelo
      * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd

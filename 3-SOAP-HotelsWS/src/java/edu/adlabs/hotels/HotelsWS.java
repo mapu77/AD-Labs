@@ -19,7 +19,9 @@ public class HotelsWS {
 
 
     /**
-     * Dados un identificador de hotel y una fecha, retorna el número de habitaciones que están libres.
+     * Dados un identificador de hotel y una fecha, retorna el número de habitaciones que están libres. 
+     * 
+     * Retorna -1 si no hay información disponible para el hotel y/o fecha en cuestión
      *
      * @param id_hotel representa el identificador del hotel
      * @param fecha representa la fecha de la reserva en formato aaaammdd
