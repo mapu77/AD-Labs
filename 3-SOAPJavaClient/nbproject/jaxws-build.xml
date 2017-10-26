@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-FlightsWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/FlightsWS"/>
+        <property name="wsdl-FlightsWS" location="xml-resources/web-service-references/FlightsWS/wsdl/localhost_8080/FlightsWS/FlightsWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/FlightsWS" destdir="${build.generated.dir}/jax-wsCache/FlightsWS" wsdl="${wsdl-FlightsWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/FlightsWS/FlightsWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-FlightsWS}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/FlightsWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/FlightsWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-FlightsWS" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/FlightsWS"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/edu/adlabs/flights"/>
+    </target>
+    <target name="wsimport-client-HotelsWS" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/HotelsWS"/>
+        <property name="wsdl-HotelsWS" location="xml-resources/web-service-references/HotelsWS/wsdl/localhost_8080/HotelsWS/HotelsWS.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/HotelsWS" destdir="${build.generated.dir}/jax-wsCache/HotelsWS" wsdl="${wsdl-HotelsWS}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/HotelsWS/HotelsWS?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-HotelsWS}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/HotelsWS"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/HotelsWS">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-HotelsWS" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/HotelsWS"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/edu/adlabs/hotels"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-FlightsWS, wsimport-client-HotelsWS"/>
+</project>
