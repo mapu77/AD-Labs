@@ -113,30 +113,6 @@ public class GenericResource {
         return "<html><head/><body><h1>Hello World!</h1></body></html>";
     }
 
-    /**
-     * PUT method for updating or creating an instance of GenericResource
-     *
-     * @param content representation for the resource
-     */
-    @PUT
-    @Consumes(MediaType.TEXT_HTML)
-    public void putHtml(String content) {
-    }
-
-    /**
-     * Método POST para reservar una plaza dados un id y una fecha
-     *
-     * @param id
-     * @param fecha
-     * @return
-     
-    @Path("reserva")
-    @POST
-    @Consumes("application/x-www-form-urlencoded")
-    @Produces("text/html")
-    public String reserva(@FormParam("id") String id, @FormParam("fecha") String fecha) {
-        return "<html><head></head> <body> Reserva </body></html>";
-    } */
     
      
    
