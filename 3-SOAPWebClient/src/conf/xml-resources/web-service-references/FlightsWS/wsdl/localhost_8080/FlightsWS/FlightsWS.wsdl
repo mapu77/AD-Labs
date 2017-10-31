@@ -4,31 +4,31 @@
 <xsd:import namespace="http://flights.adlabs.edu/" schemaLocation="http://localhost:8080/FlightsWS/FlightsWS?xsd=1"/>
 </xsd:schema>
 </types>
-<message name="reserva_plaza">
-<part name="parameters" element="tns:reserva_plaza"/>
-</message>
-<message name="reserva_plazaResponse">
-<part name="parameters" element="tns:reserva_plazaResponse"/>
-</message>
 <message name="consulta_libres">
 <part name="parameters" element="tns:consulta_libres"/>
 </message>
 <message name="consulta_libresResponse">
 <part name="parameters" element="tns:consulta_libresResponse"/>
 </message>
+<message name="reserva_plaza">
+<part name="parameters" element="tns:reserva_plaza"/>
+</message>
+<message name="reserva_plazaResponse">
+<part name="parameters" element="tns:reserva_plazaResponse"/>
+</message>
 <portType name="FlightsWS">
-<operation name="reserva_plaza">
-<input wsam:Action="http://flights.adlabs.edu/FlightsWS/reserva_plazaRequest" message="tns:reserva_plaza"/>
-<output wsam:Action="http://flights.adlabs.edu/FlightsWS/reserva_plazaResponse" message="tns:reserva_plazaResponse"/>
-</operation>
 <operation name="consulta_libres">
 <input wsam:Action="http://flights.adlabs.edu/FlightsWS/consulta_libresRequest" message="tns:consulta_libres"/>
 <output wsam:Action="http://flights.adlabs.edu/FlightsWS/consulta_libresResponse" message="tns:consulta_libresResponse"/>
 </operation>
+<operation name="reserva_plaza">
+<input wsam:Action="http://flights.adlabs.edu/FlightsWS/reserva_plazaRequest" message="tns:reserva_plaza"/>
+<output wsam:Action="http://flights.adlabs.edu/FlightsWS/reserva_plazaResponse" message="tns:reserva_plazaResponse"/>
+</operation>
 </portType>
 <binding name="FlightsWSPortBinding" type="tns:FlightsWS">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-<operation name="reserva_plaza">
+<operation name="consulta_libres">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -37,7 +37,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="consulta_libres">
+<operation name="reserva_plaza">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -1,13 +1,20 @@
 package edu.adlabs.servlets;
 
+import edu.adlabs.hotels.HotelsWS;
+import edu.adlabs.hotels.HotelsWS_Service;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class HotelManagementServlet extends HttpServlet {
+    
+    private final HotelsWS service;
+    
+    public HotelManagementServlet() {
+        service = new HotelsWS_Service().getHotelsWSPort();
+    }
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -20,6 +27,12 @@ public class HotelManagementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.valueOf(request.getParameter("hotelId"));
+        int date = Integer.valueOf(request.getParameter("hotelDate"));
+        int emptyRooms = service.consultaLibres(id, date);
+        response.setStatus(200);
+        request.getSession().setAttribute("emptyRooms", emptyRooms);
+        response.sendRedirect("index.jsp");
     }
 
     /**
@@ -33,6 +46,12 @@ public class HotelManagementServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.valueOf(request.getParameter("hotelId"));
+        int date = Integer.valueOf(request.getParameter("hotelDate"));
+        int ocuppiedRooms = service.reservaHabitacion(id, date);
+        response.setStatus(200);
+        request.getSession().setAttribute("occupiedRooms", ocuppiedRooms);
+        response.sendRedirect("index.jsp");
     }
 
     /**

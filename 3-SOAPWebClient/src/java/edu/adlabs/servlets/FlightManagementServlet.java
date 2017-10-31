@@ -3,7 +3,6 @@ package edu.adlabs.servlets;
 import edu.adlabs.flights.FlightsWS;
 import edu.adlabs.flights.FlightsWS_Service;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,7 @@ public class FlightManagementServlet extends HttpServlet {
         int emptySeats = service.consultaLibres(id, date);
         response.setStatus(200);
         request.getSession().setAttribute("emptySeats", emptySeats);
-        request.getRequestDispatcher("index.jsp").forward(request, response);        
+        response.sendRedirect("index.jsp");
     }
 
     /**
@@ -52,7 +51,7 @@ public class FlightManagementServlet extends HttpServlet {
         int ocuppiedSeats = service.reservaPlaza(id, date);
         response.setStatus(200);
         request.getSession().setAttribute("ocuppiedSeats", ocuppiedSeats);
-        request.getRequestDispatcher("index.jsp").forward(request, response);     
+        response.sendRedirect("index.jsp");
     }
 
     /**

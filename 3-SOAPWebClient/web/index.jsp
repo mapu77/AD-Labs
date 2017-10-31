@@ -12,11 +12,11 @@
     </head>
     <body class="container">
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">SOAP Web Client</span>
+              <a class="navbar-brand" href="index.jsp">SOAP Web Client</a>
         </nav>
         <div id="content" class="row justify-content-between" style="padding-top: 15px">
             <jsp:include page="/flights/flights.jsp"/>
-            <jsp:include page="/hotels.jsp"/>
+            <jsp:include page="/hotels/hotels.jsp"/>
         </div>
     </body>
 </html>

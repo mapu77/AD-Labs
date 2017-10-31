@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="card">
     <div class="card-body">
         <form method="GET" action="flightManagementServlet">
@@ -17,7 +18,7 @@
                     <span class="input-group-addon fa fa-calendar" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="flightDate" placeholder="Enter date" min="1" required>
                 </div>
-                <small id="flightIdHelp" class="form-text text-muted">Format: aaaammdd</small>
+                <small id="flightDateHelp" class="form-text text-muted">Format: aaaammdd</small>
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Check</button>
