@@ -30,9 +30,9 @@ public class HotelManagementServlet extends HttpServlet {
         int id = Integer.valueOf(request.getParameter("hotelId"));
         int date = Integer.valueOf(request.getParameter("hotelDate"));
         int emptyRooms = service.consultaLibres(id, date);
-        response.setStatus(200);
         request.getSession().setAttribute("emptyRooms", emptyRooms);
         response.sendRedirect("index.jsp");
+        response.setStatus(200);
     }
 
     /**
@@ -49,9 +49,9 @@ public class HotelManagementServlet extends HttpServlet {
         int id = Integer.valueOf(request.getParameter("hotelId"));
         int date = Integer.valueOf(request.getParameter("hotelDate"));
         int ocuppiedRooms = service.reservaHabitacion(id, date);
-        response.setStatus(200);
         request.getSession().setAttribute("occupiedRooms", ocuppiedRooms);
         response.sendRedirect("index.jsp");
+        response.setStatus(200);
     }
 
     /**

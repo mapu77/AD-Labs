@@ -2,6 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8080/FlightsWS/FlightsWS?wsdl" uri="src/conf/xml-resources/web-service-references/FlightsWS/wsdl/localhost_8080/FlightsWS/FlightsWS.wsdl"/>
     <system systemId="http://localhost:8080/FlightsWS/FlightsWS?xsd=1" uri="src/conf/xml-resources/web-service-references/FlightsWS/wsdl/localhost_8080/FlightsWS/FlightsWS.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/HotelsWS/HotelsWS?wsdl" uri="src/conf/xml-resources/web-service-references/HotelsWS_1/wsdl/localhost_8080/HotelsWS/HotelsWS.wsdl"/>
-    <system systemId="http://localhost:8080/HotelsWS/HotelsWS?xsd=1" uri="src/conf/xml-resources/web-service-references/HotelsWS_1/wsdl/localhost_8080/HotelsWS/HotelsWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/HotelsWS/HotelsWS?wsdl" uri="src/conf/xml-resources/web-service-references/HotelsWS/wsdl/localhost_8080/HotelsWS/HotelsWS.wsdl"/>
+    <system systemId="http://localhost:8080/HotelsWS/HotelsWS?xsd=1" uri="src/conf/xml-resources/web-service-references/HotelsWS/wsdl/localhost_8080/HotelsWS/HotelsWS.xsd_1.xsd"/>
 </catalog>
