@@ -47,7 +47,7 @@ public class GenericResource {
      @Path("consulta")
      @GET
      @Consumes("application/x-www-form-urlencoded")
-     @Produces("text/html")
+     @Produces("application/json")
     public String consulta_libres(@QueryParam("id_vuelo") final int id_vuelo, @QueryParam("fecha") final int fecha) {
         Statement statement = MyDB.getStatement();
         String sql = "SELECT num_plazas_max - num_plazas_ocupadas as plazas_libres FROM vuelo_fecha WHERE id_vuelo = " + id_vuelo + " AND fecha = " + fecha;
@@ -80,7 +80,7 @@ public class GenericResource {
     @Path("reserva")
     @POST
     @Consumes("application/x-www-form-urlencoded")
-    @Produces("text/html")
+    @Produces("application/json")
     public String reserva_plaza(@FormParam("id_vuelo") final int id_vuelo, @FormParam("fecha") final int fecha) {
         String plazasLibres = this.consulta_libres(id_vuelo, fecha);
         int plazasOcupadas = -1;
