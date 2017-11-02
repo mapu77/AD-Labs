@@ -34,7 +34,7 @@ public class MyDB {
             statement.executeUpdate("create table hotel_fecha (id_hotel INTEGER PRIMARY KEY, fecha INTEGER, num_hab_ocupadas INTEGER, num_hab_libres INTEGER)");
             statement.executeUpdate("insert into hotel_fecha VALUES (1, 20170101, 15, 15 )");
             statement.executeUpdate("insert into hotel_fecha VALUES (2, 20170231, 2, 35 )");
-            statement.executeUpdate("insert into hotel_fecha VALUES (3, 20170524, 0, 6 )");
+            statement.executeUpdate("insert into hotel_fecha VALUES (3, 20170509, 0, 1 )");
             statement.executeUpdate("insert into hotel_fecha VALUES (4, 20170911, 0, 1714 )");
 
         } catch (SQLException e) {
