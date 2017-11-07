@@ -1,14 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="card">
     <div class="card-body">
-        <form method="POST">
+        <form method="POST" action="flightManagementServlet">
             <h4 class="card-title">Book a seat</h4>
             <p class="card-text">Enter a flight identifier and a date for booking a seat</p>
             <div class="form-group">
                 <label for="flightId">Flight ID</label>
                 <div class="input-group">
                     <span class="input-group-addon fa fa-plane" aria-hidden="true"></span>
-                    <input type="number" class="form-control" id="id_vuelo" aria-describedby="flightId" placeholder="Enter flight Id" min="1" required>
+                    <input type="number" class="form-control" name="flightId" aria-describedby="flightId" placeholder="Enter flight Id" min="1" required>
                 </div>
                 <small id="flightIdHelp" class="form-text text-muted">i.e. 09111714</small>
             </div>
@@ -16,7 +16,7 @@
                 <label for="flightDate">Date</label>
                 <div class="input-group">
                     <span class="input-group-addon fa fa-calendar" aria-hidden="true"></span>
-                    <input type="number" class="form-control" id="fecha" placeholder="Enter date" min="1" required>
+                    <input type="number" class="form-control" name="flightDate" placeholder="Enter date" min="1" required>
                 </div>
                 <small id="flightIdHelp" class="form-text text-muted">Format: aaaammdd</small>
             </div>
@@ -39,29 +39,3 @@
         </form>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        $("#book").click(function () {
-            var id_vuelo = $("#id_vuelo").val();
-            var fecha = $("#fecha").val();
-            $.ajax({
-                type: 'POST',
-                url: "localhost:8080/REST-FlightsWS/webresources/generic/reserva",
-                dataType: JSON,
-                data: {
-                    "id_vuelo": id_vuelo,
-                    "fecha": fecha
-                },
-                success: function (data) {
-                    pageContext.getSession().setAttribute('occupiedSeats', data);
-                    alert("Success");
-                },
-                error: function (e) {
-                    alert(e);
-                }
-            });
-        });
-    });
-
-</script>
