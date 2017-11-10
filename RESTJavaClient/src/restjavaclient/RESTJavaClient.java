@@ -72,7 +72,6 @@ public class RESTJavaClient {
                         System.out.println("Empty rooms: " + emptyRooms);
 
                     }
-                    System.out.println("Empty rooms: " + doHotelsRequest("GET", id_hotel, fecha));
                     System.out.println("");
                     break;
                 case 4:
