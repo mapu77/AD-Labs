@@ -56,7 +56,7 @@ public class FlightManagementServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Map<String, Object> postParams = new LinkedHashMap<>();
-        postParams.put("id_hotel", Integer.valueOf(request.getParameter("flightId")));
+        postParams.put("id_vuelo", Integer.valueOf(request.getParameter("flightId")));
         postParams.put("fecha", Integer.valueOf(request.getParameter("flightDate")));
 
         URL url = new URL(REST_URL + "/reserva");

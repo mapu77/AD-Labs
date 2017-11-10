@@ -1,12 +1,22 @@
 package edu.adlabs.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class HotelManagementServlet extends HttpServlet {
+
+    private static String REST_URL = "http://localhost:8080/REST-HotelsWS/webresources/generic";
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -19,6 +29,19 @@ public class HotelManagementServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id = Integer.valueOf(request.getParameter("hotelId"));
+        int date = Integer.valueOf(request.getParameter("hotelDate"));
+        URL url = new URL(REST_URL + "/consulta?id_hotel=" + id + "&fecha=" + date);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Accept", "application/json");
+
+        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+        String emptySeats = br.readLine();
+
+        request.getSession().setAttribute("emptyRooms", emptySeats);
+        response.sendRedirect("index.jsp");
+        response.setStatus(200);
 
     }
 
@@ -33,7 +56,40 @@ public class HotelManagementServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        Map<String, Object> postParams = new LinkedHashMap<>();
+        postParams.put("id_hotel", Integer.valueOf(request.getParameter("hotelId")));
+        postParams.put("fecha", Integer.valueOf(request.getParameter("hotelDate")));
 
+        URL url = new URL(REST_URL + "/reserva");
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setRequestProperty("Accept", "application/json");
+        byte[] postDataBytes = buildPostBody(postParams);
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        conn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+        conn.setDoOutput(true);
+        conn.getOutputStream().write(postDataBytes);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+        String ocuppiedSeats = br.readLine();
+
+        request.getSession().setAttribute("occupiedRooms", ocuppiedSeats);
+        response.sendRedirect("index.jsp");
+        response.setStatus(200);
+    }
+
+    private byte[] buildPostBody(Map<String, Object> postParams) throws UnsupportedEncodingException {
+        StringBuilder postData = new StringBuilder();
+        for (Map.Entry<String, Object> param : postParams.entrySet()) {
+            if (postData.length() != 0) {
+                postData.append('&');
+            }
+            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+            postData.append('=');
+            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        }
+        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
+        return postDataBytes;
     }
 
     /**

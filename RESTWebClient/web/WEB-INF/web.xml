@@ -8,6 +8,14 @@
         <servlet-name>FlightManagementServlet</servlet-name>
         <url-pattern>/flightManagementServlet</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>HotelManagementServlet</servlet-name>
+        <servlet-class>edu.adlabs.servlets.HotelManagementServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HotelManagementServlet</servlet-name>
+        <url-pattern>/hotelManagementServlet</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
