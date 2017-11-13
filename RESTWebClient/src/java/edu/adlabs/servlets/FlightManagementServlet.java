@@ -1,12 +1,11 @@
 package edu.adlabs.servlets;
 
+import static ad.labs.utils.Utils.buildPostBody;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.servlet.ServletException;
@@ -16,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class FlightManagementServlet extends HttpServlet {
 
-    private static String REST_URL = "http://localhost:8080/REST-FlightsWS/webresources/generic";
+    private static final String REST_URL = "http://localhost:8080/REST-FlightsWS/webresources/generic";
 
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -75,20 +74,6 @@ public class FlightManagementServlet extends HttpServlet {
         request.getSession().setAttribute("occupiedSeats", ocuppiedSeats);
         response.sendRedirect("index.jsp");
         response.setStatus(200);
-    }
-
-    private byte[] buildPostBody(Map<String, Object> postParams) throws UnsupportedEncodingException {
-        StringBuilder postData = new StringBuilder();
-        for (Map.Entry<String, Object> param : postParams.entrySet()) {
-            if (postData.length() != 0) {
-                postData.append('&');
-            }
-            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
-            postData.append('=');
-            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
-        }
-        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
-        return postDataBytes;
     }
 
     /**

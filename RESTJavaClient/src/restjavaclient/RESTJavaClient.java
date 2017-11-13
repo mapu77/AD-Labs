@@ -148,7 +148,6 @@ public class RESTJavaClient {
             conn.setRequestMethod(method);
             StringBuilder postData = new StringBuilder();
             if (method.equals("POST")) {
-
                 for (Map.Entry<String, Object> param : postParams.entrySet()) {
                     if (postData.length() != 0) {
                         postData.append('&');
