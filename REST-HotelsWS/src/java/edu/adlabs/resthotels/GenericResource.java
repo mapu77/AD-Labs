@@ -33,17 +33,18 @@ public class GenericResource {
      */
     public GenericResource() {
     }
-    
+
     /**
-     * Dados un identificador de hotel y una fecha, retorna el número de habitaciones que están libres. 
-     * 
-     * Retorna -1 si no hay información disponible para el hotel y/o fecha en cuestión
+     * Dados un identificador de hotel y una fecha, retorna el número de
+     * habitaciones que están libres.
+     *
+     * Retorna -1 si no hay información disponible para el hotel y/o fecha en
+     * cuestión
      *
      * @param id_hotel representa el identificador del hotel
      * @param fecha representa la fecha de la reserva en formato aaaammdd
      * @return el número de plazas libres en el hotel
      */
-    
     @Path("consulta")
     @GET
     @Consumes("application/x-www-form-urlencoded")
@@ -58,15 +59,19 @@ public class GenericResource {
             habLibres = rs.getInt("num_hab_libres");
         } catch (SQLException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MyDB.disconnect();
         }
         return String.valueOf(habLibres);
     }
-    
+
     /**
-     * Dados un identificador de hotel y una fecha, reserva una habitación si quedan habitaciones libres (incrementa el
-     * número de habitaciones ocupadas en esa fecha en el hotel).
+     * Dados un identificador de hotel y una fecha, reserva una habitación si
+     * quedan habitaciones libres (incrementa el número de habitaciones ocupadas
+     * en esa fecha en el hotel).
      *
-     * Si es posible realizar la reserva, esta operación retorna el número de habitaciones ocupadas que hay en el hotel.
+     * Si es posible realizar la reserva, esta operación retorna el número de
+     * habitaciones ocupadas que hay en el hotel.
      *
      * Si no es posible realizar la reserva, esta operación retorna -1.
      *
@@ -74,7 +79,6 @@ public class GenericResource {
      * @param fecha representa la fecha de la reserva en formato aaaammdd
      * @return el número de plazas ocupadas en el hotel
      */
-    
     @Path("reserva")
     @POST
     @Consumes("application/x-www-form-urlencoded")
@@ -95,14 +99,17 @@ public class GenericResource {
                 habOcupadas = rs.getInt("num_hab_ocupadas");
             } catch (SQLException ex) {
                 Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                MyDB.disconnect();
             }
         }
         return String.valueOf(habOcupadas);
     }
 
-
     /**
-     * Retrieves representation of an instance of edu.adlabs.resthotels.GenericResource
+     * Retrieves representation of an instance of
+     * edu.adlabs.resthotels.GenericResource
+     *
      * @return an instance of java.lang.String
      */
     @GET

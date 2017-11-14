@@ -43,4 +43,12 @@ public class MyDB {
             Logger.getLogger(MyDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public static void disconnect(){
+        try {
+            db.connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MyDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

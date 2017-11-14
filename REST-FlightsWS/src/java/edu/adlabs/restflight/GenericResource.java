@@ -34,20 +34,22 @@ public class GenericResource {
      */
     public GenericResource() {
     }
-    
+
     /**
-     * Dados un identificador de vuelo y una fecha, retorna el número de plazas que están libres.
-     * 
+     * Dados un identificador de vuelo y una fecha, retorna el número de plazas
+     * que están libres.
+     *
      * Retorna -1 si no hay información para el avión y/o la fecha en cuestión
      *
      * @param id_vuelo representa el identificador de vuelo
-     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato
+     * aaaammdd
      * @return el número de plazas libres en el vuelo
      */
-     @Path("consulta")
-     @GET
-     @Consumes("application/x-www-form-urlencoded")
-     @Produces("application/json")
+    @Path("consulta")
+    @GET
+    @Consumes("application/x-www-form-urlencoded")
+    @Produces("application/json")
     public String consulta_libres(@QueryParam("id_vuelo") final int id_vuelo, @QueryParam("fecha") final int fecha) {
         Statement statement = MyDB.getStatement();
         String sql = "SELECT num_plazas_max - num_plazas_ocupadas as plazas_libres FROM vuelo_fecha WHERE id_vuelo = " + id_vuelo + " AND fecha = " + fecha;
@@ -58,25 +60,27 @@ public class GenericResource {
             plazasLibres = rs.getInt("plazas_libres");
         } catch (SQLException ex) {
             Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MyDB.disconnect();
         }
         return String.valueOf(plazasLibres);
     }
-    
-   
-    
+
     /**
-     * Dados un identificador de vuelo y una fecha, reserva una plaza si quedan plazas libres (incrementa el número de
-     * plazas ocupadas en un vuelo en una fecha.
+     * Dados un identificador de vuelo y una fecha, reserva una plaza si quedan
+     * plazas libres (incrementa el número de plazas ocupadas en un vuelo en una
+     * fecha.
      *
-     * Si es posible realizar la reserva, esta operación retorna el número de plazas ocupadas que hay en el vuelo.
+     * Si es posible realizar la reserva, esta operación retorna el número de
+     * plazas ocupadas que hay en el vuelo.
      *
      * Si no es posible realizar la reserva, esta operación retorna -1.
      *
      * @param id_vuelo representa el identificador de vuelo
-     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato
+     * aaaammdd
      * @return el número de plazas ocupadas en el vuelo
      */
-    
     @Path("reserva")
     @POST
     @Consumes("application/x-www-form-urlencoded")
@@ -95,11 +99,12 @@ public class GenericResource {
                 plazasOcupadas = rs.getInt("num_plazas_ocupadas");
             } catch (SQLException ex) {
                 Logger.getLogger(GenericResource.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                MyDB.disconnect();
             }
         }
         return String.valueOf(plazasOcupadas);
     }
-    
 
     /**
      * Retrieves representation of an instance of
@@ -113,7 +118,4 @@ public class GenericResource {
         return "<html><head/><body><h1>Hello World!</h1></body></html>";
     }
 
-    
-     
-   
 }

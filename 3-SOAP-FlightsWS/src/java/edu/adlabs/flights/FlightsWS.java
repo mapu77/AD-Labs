@@ -17,12 +17,14 @@ import java.util.logging.Logger;
 public class FlightsWS {
 
     /**
-     * Dados un identificador de vuelo y una fecha, retorna el número de plazas que están libres.
-     * 
+     * Dados un identificador de vuelo y una fecha, retorna el número de plazas
+     * que están libres.
+     *
      * Retorna -1 si no hay información para el avión y/o la fecha en cuestión
      *
      * @param id_vuelo representa el identificador de vuelo
-     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato
+     * aaaammdd
      * @return el número de plazas libres en el vuelo
      */
     @WebMethod(operationName = "consulta_libres")
@@ -36,20 +38,25 @@ public class FlightsWS {
             plazasLibres = rs.getInt("plazas_libres");
         } catch (SQLException ex) {
             Logger.getLogger(FlightsWS.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MyDB.disconnect();
         }
         return plazasLibres;
     }
 
     /**
-     * Dados un identificador de vuelo y una fecha, reserva una plaza si quedan plazas libres (incrementa el número de
-     * plazas ocupadas en un vuelo en una fecha.
+     * Dados un identificador de vuelo y una fecha, reserva una plaza si quedan
+     * plazas libres (incrementa el número de plazas ocupadas en un vuelo en una
+     * fecha.
      *
-     * Si es posible realizar la reserva, esta operación retorna el número de plazas ocupadas que hay en el vuelo.
+     * Si es posible realizar la reserva, esta operación retorna el número de
+     * plazas ocupadas que hay en el vuelo.
      *
      * Si no es posible realizar la reserva, esta operación retorna -1.
      *
      * @param id_vuelo representa el identificador de vuelo
-     * @param fecha representa la fecha en la que se realiza el vuelo en formato aaaammdd
+     * @param fecha representa la fecha en la que se realiza el vuelo en formato
+     * aaaammdd
      * @return el número de plazas ocupadas en el vuelo
      */
     @WebMethod(operationName = "reserva_plaza")
@@ -67,6 +74,8 @@ public class FlightsWS {
                 plazasOcupadas = rs.getInt("num_plazas_ocupadas");
             } catch (SQLException ex) {
                 Logger.getLogger(FlightsWS.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                MyDB.disconnect();
             }
         }
         return plazasOcupadas;
