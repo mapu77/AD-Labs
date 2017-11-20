@@ -26,7 +26,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-plane"></span>
-                                    <input type="text" class="form-control" placeholder="Nº Vuelo" name="num_vuelo">
+                                    <input type="text" class="form-control" placeholder="Nº Vuelo" name="num_vuelo" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
-                                    <input type="text" class="form-control" placeholder="Compañia" name="companyia">
+                                    <input type="text" class="form-control" placeholder="Compañia" name="companyia" required>
                                 </div>
                             </div>
                             <div class="form-group">

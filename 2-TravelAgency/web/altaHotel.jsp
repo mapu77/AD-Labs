@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
-                                    <input type="text" class="form-control" placeholder="Cadena hotelera" name="cadena">
+                                    <input type="text" class="form-control" placeholder="Cadena hotelera" name="cadena" required>
                                 </div>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                     <span class="input-group-addon glyphicon glyphicon-bed"></span>
                                     <input type="number" class="form-control" placeholder="Nº Habitaciones"
                                            name="num_hab"
-                                           min="1">
+                                           min="1" required>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
-                                    <input type="text" class="form-control" placeholder="Calle" name="calle">
+                                    <input type="text" class="form-control" placeholder="Calle" name="calle" required>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="number" class="form-control" placeholder="Número" name="num" min="0">
+                                    <input type="number" class="form-control" placeholder="Número" name="num" min="0" required>
                                 </div>
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="text" class="form-control" placeholder="Código postal" name="cp">
+                                    <input type="text" class="form-control" placeholder="Código postal" name="cp" required>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
                                     <input type="time" class="form-control" placeholder="Ciudad"
-                                           name="ciudad">
+                                           name="ciudad" required>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
                                     <input type="time" class="form-control" placeholder="Provincia"
-                                           name="provincia">
+                                           name="provincia" required>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
                                     <input type="time" class="form-control" placeholder="Pais"
-                                           name="pais">
+                                           name="pais" required>
                                 </div>
                             </div>
                         </div>

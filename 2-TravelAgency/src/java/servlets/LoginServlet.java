@@ -38,8 +38,9 @@ public class LoginServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "This should not occur and in any case it is not your fault");
+        } finally {
+            MyDB.disconnect();
         }
-
     }
 
     @Override
