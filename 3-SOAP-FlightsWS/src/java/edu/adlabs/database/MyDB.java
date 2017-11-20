@@ -15,6 +15,11 @@ public class MyDB {
 
     public static Statement getStatement() {
         if (db.connection != null) {
+            try {
+                db.statement = db.connection.createStatement();
+            } catch (SQLException ex) {
+                Logger.getLogger(MyDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return db.statement;
         } else {
             db = new MyDB();
@@ -43,10 +48,11 @@ public class MyDB {
             Logger.getLogger(MyDB.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public static void disconnect() {
         try {
-            db.connection.close();
+            statement.close();
+            statement = null;
         } catch (SQLException ex) {
             Logger.getLogger(MyDB.class.getName()).log(Level.SEVERE, null, ex);
         }
