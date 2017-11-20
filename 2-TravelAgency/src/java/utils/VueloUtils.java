@@ -13,31 +13,33 @@ public class VueloUtils {
 
     public List<String> getCompanyias() {
         Statement statment = MyDB.getStatement();
+        List<String> companyias = new ArrayList<>();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT companyia FROM vuelos where companyia is not null order by companyia asc;");
-            List<String> companyias = new ArrayList<>();
             while (rs.next()) {
                 companyias.add(rs.getString("companyia"));
             }
-            return companyias;
         } catch (SQLException ex) {
             Logger.getLogger(VueloUtils.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MyDB.disconnect();
         }
-        return null;
+        return companyias;
     }
-    
+
     public List<String> getCiudades() {
         Statement statment = MyDB.getStatement();
+        List<String> ciudades = new ArrayList<>();
         try {
             ResultSet rs = statment.executeQuery("SELECT DISTINCT ciudad FROM (SELECT origen AS ciudad FROM vuelos where ciudad is not null UNION SELECT destino AS ciudad FROM vuelos where ciudad is not null) as mytable");
-            List<String> ciudades = new ArrayList<>();
             while (rs.next()) {
                 ciudades.add(rs.getString("ciudad"));
             }
-            return ciudades;
         } catch (SQLException ex) {
             Logger.getLogger(VueloUtils.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            MyDB.disconnect();
         }
-        return null;
+        return ciudades;
     }
 }

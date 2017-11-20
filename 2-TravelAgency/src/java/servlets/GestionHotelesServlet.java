@@ -67,7 +67,6 @@ public class GestionHotelesServlet extends HttpServlet {
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "This should not occur and it is not your fault");
-
         } finally {
             MyDB.disconnect();
         }
@@ -99,15 +98,15 @@ public class GestionHotelesServlet extends HttpServlet {
             rs.next();
             Integer id_hotel = rs.getInt("max_id_hotel") + 1;
             StringBuilder sql = new StringBuilder("insert into hoteles values(" + id_hotel);
-            sql.append(nombre == null ? (", " + nombre) : (", '" + nombre + "'"));
-            sql.append(cadena == null ? (", " + cadena) : (", '" + cadena + "'"));
+            sql.append(nombre == null ? (", " + nombre) : (", '" + nombre.replace("'", "''") + "'"));
+            sql.append(cadena == null ? (", " + cadena) : (", '" + cadena.replace("'", "''") + "'"));
             sql.append(", " + num_hab);
-            sql.append(calle == null ? (", " + calle) : (", '" + calle + "'"));
+            sql.append(calle == null ? (", " + calle) : (", '" + calle.replace("'", "''") + "'"));
             sql.append(", " + num);
-            sql.append(cp == null ? (", " + cp) : (", '" + cp + "'"));
-            sql.append(ciudad == null ? (", " + ciudad) : (", '" + ciudad + "'"));
-            sql.append(provincia == null ? (", " + provincia) : (", '" + provincia + "'"));
-            sql.append(pais == null ? (", " + pais) : (", '" + pais + "'"));
+            sql.append(cp == null ? (", " + cp) : (", '" + cp.replace("'", "''") + "'"));
+            sql.append(ciudad == null ? (", " + ciudad) : (", '" + ciudad.replace("'", "''") + "'"));
+            sql.append(provincia == null ? (", " + provincia) : (", '" + provincia.replace("'", "''") + "'"));
+            sql.append(pais == null ? (", " + pais) : (", '" + pais.replace("'", "''") + "'"));
             sql.append(")");
             statement.executeUpdate(sql.toString());
             request.getSession().setAttribute("success", "Hotel creado correctamente");

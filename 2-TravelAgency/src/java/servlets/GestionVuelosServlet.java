@@ -80,12 +80,12 @@ public class GestionVuelosServlet extends HttpServlet {
             rs.next();
             Integer id_vuelo = rs.getInt("max_id_vuelo") + 1;
             StringBuilder sql = new StringBuilder("insert into vuelos values(" + id_vuelo);
-            sql.append(numVuelo == null ? (", " + numVuelo) : (", '" + numVuelo + "'"));
-            sql.append(companyia == null ? (", " + companyia) : (", '" + numVuelo + "'"));
-            sql.append(origen == null ? (", " + origen) : (", '" + origen + "'"));
-            sql.append(hora_salida == null ? (", " + hora_salida) : (", '" + hora_salida + "'"));
-            sql.append(destino == null ? (", " + destino) : (", '" + destino + "'"));
-            sql.append(hora_llegada == null ? (", " + hora_llegada) : (", '" + hora_llegada + "'"));
+            sql.append(numVuelo == null ? (", " + numVuelo) : (", '" + numVuelo.replace("'", "''") + "'"));
+            sql.append(companyia == null ? (", " + companyia) : (", '" + companyia.replace("'", "''") + "'"));
+            sql.append(origen == null ? (", " + origen) : (", '" + origen.replace("'", "''") + "'"));
+            sql.append(hora_salida == null ? (", " + hora_salida) : (", '" + hora_salida.replace("'", "''") + "'"));
+            sql.append(destino == null ? (", " + destino) : (", '" + destino.replace("'", "''") + "'"));
+            sql.append(hora_llegada == null ? (", " + hora_llegada) : (", '" + hora_llegada.replace("'", "''") + "'"));
             sql.append(")");
             statement.executeUpdate(sql.toString());
             request.getSession().setAttribute("success", "Vuelo creado correctamente");

@@ -31,7 +31,8 @@
 <div class="jumbotron">
     <h1>Travel Agency</h1>
     <p>Welcome to the new revolutionary travel agency web application.</p>
-    <p>Here you will find flights and hotels to book.</p>
+    <p>Here you can add and search flights and hotels.</p>
+    <p>Now you can check and book flights and hotels too. <span class="label label-success">New</span></p>
     <div class="container row">
         <div class="col-md-4 col">
             <form method="POST" action="loginServlet" class="form-signin">
