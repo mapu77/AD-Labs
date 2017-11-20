@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="hotelId">Hotel ID</label>
                 <div class="input-group">
-                    <span class="input-group-addon fa fa-bed" aria-hidden="true"></span>
+                    <span class="input-group-addon glyphicon glyphicon-bed" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="hotelId" aria-describedby="hotelId" placeholder="Enter hotel Id" min="1" required>
                 </div>
                 <small id="hotelIdHelp" class="form-text text-muted">i.e. 09111714</small>
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="hotelDate">Date</label>
                 <div class="input-group">
-                    <span class="input-group-addon fa fa-calendar" aria-hidden="true"></span>
+                    <span class="input-group-addon glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="hotelDate" placeholder="Enter date" min="1" required>
                 </div>
                 <small id="hotelDateHelp" class="form-text text-muted">Format: aaaammdd</small>
@@ -33,7 +33,7 @@
                         </c:otherwise>
                     </c:choose>
                 </c:if>
-                <% pageContext.getSession().removeAttribute("emptyRooms");%>
+                <% pageContext.getSession().removeAttribute("emptyRoomsREST");%>
             </div>
         </form>
     </div>

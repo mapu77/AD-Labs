@@ -31,7 +31,7 @@ public class FlightManagementServlet extends HttpServlet {
         int date = Integer.valueOf(request.getParameter("flightDate"));
         int emptySeats = service.consultaLibres(id, date);
         request.getSession().setAttribute("emptySeats", emptySeats);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("integrationsoap.jsp");
         response.setStatus(200);
     }
 
@@ -50,7 +50,7 @@ public class FlightManagementServlet extends HttpServlet {
         int date = Integer.valueOf(request.getParameter("flightDate"));
         int ocuppiedSeats = service.reservaPlaza(id, date);
         request.getSession().setAttribute("occupiedSeats", ocuppiedSeats);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("integrationsoap.jsp");
         response.setStatus(200);
     }
 

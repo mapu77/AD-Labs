@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="flightId">Flight ID</label>
                 <div class="input-group">
-                    <span class="input-group-addon fa fa-plane" aria-hidden="true"></span>
+                    <span class="input-group-addon glyphicon glyphicon-plane" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="flightId" aria-describedby="flightId" placeholder="Enter flight Id" min="1" required>
                 </div>
                 <small id="flightIdHelp" class="form-text text-muted">i.e. 09111714</small>
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="flightDate">Date</label>
                 <div class="input-group">
-                    <span class="input-group-addon fa fa-calendar" aria-hidden="true"></span>
+                    <span class="input-group-addon glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="flightDate" placeholder="Enter date" min="1" required>
                 </div>
                 <small id="flightIdHelp" class="form-text text-muted">Format: aaaammdd</small>
@@ -34,7 +34,7 @@
                         </c:otherwise>
                     </c:choose>
                 </c:if>
-                <% pageContext.getSession().removeAttribute("occupiedSeats");%>
+                <% pageContext.getSession().removeAttribute("occupiedSeatsREST");%>
             </div>
         </form>
     </div>

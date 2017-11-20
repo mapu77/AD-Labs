@@ -31,7 +31,7 @@ public class HotelManagementServlet extends HttpServlet {
         int date = Integer.valueOf(request.getParameter("hotelDate"));
         int emptyRooms = service.consultaLibres(id, date);
         request.getSession().setAttribute("emptyRooms", emptyRooms);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("integrationsoap.jsp");
         response.setStatus(200);
     }
 
@@ -50,7 +50,7 @@ public class HotelManagementServlet extends HttpServlet {
         int date = Integer.valueOf(request.getParameter("hotelDate"));
         int ocuppiedRooms = service.reservaHabitacion(id, date);
         request.getSession().setAttribute("occupiedRooms", ocuppiedRooms);
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("integrationsoap.jsp");
         response.setStatus(200);
     }
 
