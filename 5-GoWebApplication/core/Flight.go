@@ -11,12 +11,11 @@ type Flight struct {
 }
 
 
-func newFlight(id int, code string, company string, departureTime string, departureCity string, arrivalTime string, arrivalCity string)(*Flight) {
-	return nil
+func newFlight(id int, code string, company string, departureTime string, departureCity string, arrivalTime string, arrivalCity string) *Flight {
+	return &Flight{Id: id, Code: code, Company: company, DepartureTime: departureTime, DepartureCity: departureCity, ArrivalTime: arrivalTime, ArrivalCity: arrivalCity}
 }
 
 // Make a flight persistent. Returns nil if ok, the produced error otherwise
 func persist(flight *Flight) error {
 	return nil
 }
-
