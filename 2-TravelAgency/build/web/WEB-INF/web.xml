@@ -22,6 +22,22 @@
         <servlet-name>GestionHotelesServlet</servlet-name>
         <servlet-class>servlets.GestionHotelesServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FlightManagementServlet</servlet-name>
+        <servlet-class>servlets.FlightManagementServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HotelManagementServlet</servlet-name>
+        <servlet-class>servlets.HotelManagementServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FlightManagementServletRest</servlet-name>
+        <servlet-class>servlets.FlightManagementServletRest</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HotelManagementServletRest</servlet-name>
+        <servlet-class>servlets.HotelManagementServletRest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/loginServlet</url-pattern>
@@ -37,6 +53,22 @@
     <servlet-mapping>
         <servlet-name>GestionHotelesServlet</servlet-name>
         <url-pattern>/GestionHotelesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FlightManagementServlet</servlet-name>
+        <url-pattern>/flightManagementServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotelManagementServlet</servlet-name>
+        <url-pattern>/hotelManagementServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FlightManagementServletRest</servlet-name>
+        <url-pattern>/flightManagementServletRest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HotelManagementServletRest</servlet-name>
+        <url-pattern>/hotelManagementServletRest</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

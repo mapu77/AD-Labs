@@ -57,6 +57,17 @@
                         <li><a href="buscarHotel.jsp">Buscar hotel</a></li>
                     </ul>
                 </li>
+                <li role="presentation">
+                    <a href="integrationsoap.jsp" role="button">
+                        Integración SOAP
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="integrationrest.jsp" role="button">
+                        Integración REST
+                    </a>
+                </li>
+                
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><p class="navbar-text">Signed in as ${username}</p></li>
