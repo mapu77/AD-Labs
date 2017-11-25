@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="container">
-            <jsp:include page="menu.jsp"/>
+            <jsp:include page="/menu.jsp"/>
             <c:choose>
                 <c:when test="${empty hoteles}">
                     <h2>No hay resultados para su búsqueda</h2>

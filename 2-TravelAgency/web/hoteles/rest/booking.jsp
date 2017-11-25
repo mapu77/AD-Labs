@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="card">
     <div class="card-body">
-        <form method="GET" action="hotelManagementServletRest">
-            <h4 class="card-title">Check available rooms</h4>
-            <p class="card-text">Enter the hotel identifier and a date</p>
+        <form method="POST" action="${pageContext.request.contextPath}/hotelManagementServletRest">
+            <h4 class="card-title">Book seat</h4>
+            <p class="card-text">Enter a hotel identifier and a date for booking a room</p>
             <div class="form-group">
                 <label for="hotelId">Hotel ID</label>
                 <div class="input-group">
@@ -18,22 +18,22 @@
                     <span class="input-group-addon glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="hotelDate" placeholder="Enter date" min="1" required>
                 </div>
-                <small id="hotelDateHelp" class="form-text text-muted">Format: aaaammdd</small>
+                <small id="hotelIdHelp" class="form-text text-muted">Format: aaaammdd</small>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Check</button>
-                <c:set var="emptyRooms" value="${pageContext.getSession().getAttribute('emptyRoomsREST')}"></c:set>
-                <c:if test="${not empty emptyRooms}">
+                <button type="submit" class="btn btn-primary">Book</button>
+                <c:set var="occupiedRooms" value="${pageContext.getSession().getAttribute('occupiedRoomsREST')}"></c:set>
+                <c:if test="${not empty occupiedRooms}">
                     <c:choose>
-                        <c:when test="${emptyRooms < 0}">
-                            <p class="card-text text-right" style="color: red; margin-top: -1.875rem">There's no hotel with such id in such date</p>
+                        <c:when test="${occupiedRooms < 0}">
+                            <p class="card-text text-right" style="color: red; margin-top: -1.875rem">There might be no empty rooms in this hotel<br/>for this date</p>
                         </c:when>
                         <c:otherwise>
-                            <p class="card-text text-right" style="margin-top: -1.875rem"><strong>Empty rooms: </strong>${emptyRooms}</p>
+                            <p class="card-text text-right" style="margin-top: -1.875rem"><strong>Occupied rooms: </strong>${occupiedRooms}</p>
                         </c:otherwise>
                     </c:choose>
                 </c:if>
-                <% pageContext.getSession().removeAttribute("emptyRoomsREST");%>
+                <% pageContext.getSession().removeAttribute("occupiedRoomsREST");%>
             </div>
         </form>
     </div>

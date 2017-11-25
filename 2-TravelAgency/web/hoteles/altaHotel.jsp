@@ -13,14 +13,14 @@
 </head>
 <body>
 <div class="container">
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="/menu.jsp"/>
     <div id="content" style="padding-left: 20px; padding-right: 20px;">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Alta hotel</h3>
             </div>
             <div class="panel-body container-fluid">
-                <form method="POST" action="GestionHotelesServlet">
+                <form method="POST" action="${pageContext.request.contextPath}/GestionHotelesServlet">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="form-group">
@@ -77,7 +77,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="time" class="form-control" placeholder="Ciudad"
+                                    <input type="text" class="form-control" placeholder="Ciudad"
                                            name="ciudad" required>
                                 </div>
                             </div>
@@ -86,7 +86,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="time" class="form-control" placeholder="Provincia"
+                                    <input type="text" class="form-control" placeholder="Provincia"
                                            name="provincia" required>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-globe"></span>
-                                    <input type="time" class="form-control" placeholder="Pais"
+                                    <input type="text" class="form-control" placeholder="Pais"
                                            name="pais" required>
                                 </div>
                             </div>

@@ -13,8 +13,8 @@
        <jsp:include page="menu.jsp"/> 
         <div id="content" class="row" style="padding-top: 15px">
             <h1>SOAP Service</h1>
-            <jsp:include page="soapflights/flights.jsp"/>
-            <jsp:include page="soaphotels/hotels.jsp"/>
+            <jsp:include page="vuelos/soap/main.jsp"/>
+            <jsp:include page="hoteles/soap/main.jsp"/>
         </div>
     </body>
 </html>

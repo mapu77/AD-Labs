@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="card">
     <div class="card-body">
-        <form method="GET" action="flightManagementServletRest">
+        <form method="GET" action="${pageContext.request.contextPath}/flightManagementServlet">
             <h4 class="card-title">Check available seats</h4>
             <p class="card-text">Enter the flight identifier and the date of your flight</p>
             <div class="form-group">
@@ -22,7 +22,7 @@
             </div>
             <div>
                 <button type="submit" class="btn btn-primary">Check</button>
-                <c:set var="emptySeats" value="${pageContext.getSession().getAttribute('emptySeatsREST')}"></c:set>
+                <c:set var="emptySeats" value="${pageContext.getSession().getAttribute('emptySeats')}"></c:set>
                 <c:if test="${not empty emptySeats}">
                     <c:choose>
                         <c:when test="${emptySeats < 0}">
@@ -33,7 +33,7 @@
                         </c:otherwise>
                     </c:choose>
                 </c:if>
-                <% pageContext.getSession().removeAttribute("emptySeatsREST");%>
+                <% pageContext.getSession().removeAttribute("emptySeats");%>
             </div>
         </form>
     </div>

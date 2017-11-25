@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="card">
     <div class="card-body">
-        <form method="GET" action="flightManagementServletRest">
-            <h4 class="card-title">Check available seats</h4>
-            <p class="card-text">Enter the flight identifier and the date of your flight</p>
+        <form method="POST" action="${pageContext.request.contextPath}/flightManagementServlet">
+            <h4 class="card-title">Book a seat</h4>
+            <p class="card-text">Enter a flight identifier and a date for booking a seat</p>
             <div class="form-group">
                 <label for="flightId">Flight ID</label>
                 <div class="input-group">
@@ -18,22 +18,23 @@
                     <span class="input-group-addon glyphicon glyphicon-calendar" aria-hidden="true"></span>
                     <input type="number" class="form-control" name="flightDate" placeholder="Enter date" min="1" required>
                 </div>
-                <small id="flightDateHelp" class="form-text text-muted">Format: aaaammdd</small>
+                <small id="flightIdHelp" class="form-text text-muted">Format: aaaammdd</small>
             </div>
             <div>
-                <button type="submit" class="btn btn-primary">Check</button>
-                <c:set var="emptySeats" value="${pageContext.getSession().getAttribute('emptySeatsREST')}"></c:set>
-                <c:if test="${not empty emptySeats}">
+                <button type="submit" class="btn btn-primary">Book</button>
+                <c:set var="occupiedSeats" value="${pageContext.getSession().getAttribute('occupiedSeats')}"></c:set>
+                <c:if test="${not empty occupiedSeats}">
+                    <br/>
                     <c:choose>
-                        <c:when test="${emptySeats < 0}">
-                            <p class="card-text text-right" style="color: red; margin-top: -1.875rem">There's no flight with such id in such date</p>
+                        <c:when test="${occupiedSeats < 0}">
+                            <p class="card-text text-right" style="color: red; margin-top: -1.875rem">There might be no empty seats in this flight<br/>for this date</p>
                         </c:when>
                         <c:otherwise>
-                            <p class="card-text text-right" style="margin-top: -1.875rem"><strong>Empty seats: </strong>${emptySeats}</p>
+                            <p class="card-text text-right" style="margin-top: -1.875rem"><strong>Occupied seats: </strong>${occupiedSeats}</p>
                         </c:otherwise>
                     </c:choose>
                 </c:if>
-                <% pageContext.getSession().removeAttribute("emptySeatsREST");%>
+                <% pageContext.getSession().removeAttribute("occupiedSeats");%>
             </div>
         </form>
     </div>

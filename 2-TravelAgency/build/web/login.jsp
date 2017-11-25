@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <%
     if (session.getAttribute("user") != null) {
-        response.sendRedirect("menu.jsp");
+        response.sendRedirect("home.jsp");
     }
 %>
 <html>

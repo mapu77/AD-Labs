@@ -15,8 +15,8 @@
              <jsp:include page="menu.jsp"/> 
         <div id="content" class="row justify-content-between">
             <h1>REST Service</h1>
-            <jsp:include page="restflights/flights.jsp"/>
-            <jsp:include page="resthotels/hotels.jsp"/>
+            <jsp:include page="vuelos/rest/main.jsp"/>
+            <jsp:include page="hoteles/rest/main.jsp"/>
         </div>
     </body>
 </html>

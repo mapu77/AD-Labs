@@ -36,13 +36,13 @@ public class GestionHotelesServlet extends HttpServlet {
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM hoteles WHERE");
             if (nombre != null) {
-                sql.append(" nom_hotel = '" + nombre + "' AND");
+                sql.append(" nom_hotel = '" + nombre.replace("'", "''") + "' AND");
             }
             if (cadena != null) {
-                sql.append(" cadena = '" + cadena + "' AND");
+                sql.append(" cadena = '" + cadena.replace("'", "''") + "' AND");
             }
             if (ciudad != null) {
-                sql.append(" ciudad = '" + ciudad + "' AND");
+                sql.append(" ciudad = '" + ciudad.replace("'", "''") + "' AND");
             }
             sql.append(" 1=1");
             ResultSet rs = statement.executeQuery(sql.toString());
@@ -63,7 +63,7 @@ public class GestionHotelesServlet extends HttpServlet {
             }
             request.setAttribute("hoteles", hotelesEncontrados);
             response.setStatus(200);
-            request.getRequestDispatcher("tablaHoteles.jsp").forward(request, response);
+            request.getRequestDispatcher("hoteles/tablaHoteles.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "This should not occur and it is not your fault");

@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="container">
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="/menu.jsp"/>
     <div id="content" style="padding-left: 20px; padding-right: 20px;">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -36,7 +36,7 @@
             </div>
             <div class="panel-body container-fluid">
 
-                <form action="GestionVuelosServlet" method="GET">
+                <form action="${pageContext.request.contextPath}/GestionVuelosServlet" method="GET">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">

@@ -13,14 +13,14 @@
 </head>
 <body>
 <div class="container">
-    <jsp:include page="menu.jsp"/>
+    <jsp:include page="/menu.jsp"/>
     <div id="content" style="padding-left: 20px; padding-right: 20px;">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Alta vuelo</h3>
             </div>
             <div class="panel-body container-fluid">
-                <form method="POST" action="GestionVuelosServlet">
+                <form method="POST" action="${pageContext.request.contextPath}/GestionVuelosServlet">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">

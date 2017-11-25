@@ -29,16 +29,16 @@ public class GestionVuelosServlet extends HttpServlet {
         try {
             StringBuilder sql = new StringBuilder("SELECT * FROM vuelos WHERE");
             if (numVuelo != null) {
-                sql.append(" num_vuelo = '" + numVuelo + "' AND");
+                sql.append(" num_vuelo = '" + numVuelo.replace("'", "''") + "' AND");
             }
             if (ciudadOrigen != null) {
-                sql.append(" origen = '" + ciudadOrigen + "' AND");
+                sql.append(" origen = '" + ciudadOrigen.replace("'", "''") + "' AND");
             }
             if (ciudadDestino != null) {
-                sql.append(" destino = '" + ciudadDestino + "' AND");
+                sql.append(" destino = '" + ciudadDestino.replace("'", "''") + "' AND");
             }
             if (companyia != null) {
-                sql.append(" companyia = '" + companyia + "' AND");
+                sql.append(" companyia = '" + companyia.replace("'", "''") + "' AND");
             }
             sql.append(" 1=1");
             ResultSet rs = statement.executeQuery(sql.toString());
@@ -56,7 +56,7 @@ public class GestionVuelosServlet extends HttpServlet {
             }
             request.setAttribute("vuelos", vuelosEncontrados);
             response.setStatus(200);
-            request.getRequestDispatcher("tablaVuelos.jsp").forward(request, response);
+            request.getRequestDispatcher("vuelos/tablaVuelos.jsp").forward(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(GestionVuelosServlet.class.getName()).log(Level.SEVERE, null, ex);
             response.sendError(500, "This should not occur and it is not your fault");

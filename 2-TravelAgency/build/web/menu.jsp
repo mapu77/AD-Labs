@@ -43,8 +43,8 @@
                         Vuelos <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="altaVuelo.jsp">Alta vuelo</a></li>
-                        <li><a href="buscarVuelo.jsp">Buscar vuelo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/vuelos/altaVuelo.jsp">Alta vuelo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/vuelos/buscarVuelo.jsp">Buscar vuelo</a></li>
                     </ul>
                 </li>
                 <li role="presentation" class="dropdown">
@@ -53,17 +53,17 @@
                         Hoteles <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="altaHotel.jsp">Alta hotel</a></li>
-                        <li><a href="buscarHotel.jsp">Buscar hotel</a></li>
+                        <li><a href="${pageContext.request.contextPath}/hoteles/altaHotel.jsp">Alta hotel</a></li>
+                        <li><a href="${pageContext.request.contextPath}/hoteles/buscarHotel.jsp">Buscar hotel</a></li>
                     </ul>
                 </li>
                 <li role="presentation">
-                    <a href="integrationsoap.jsp" role="button">
+                    <a href="${pageContext.request.contextPath}/integrationsoap.jsp" role="button">
                         Integración SOAP
                     </a>
                 </li>
                 <li role="presentation">
-                    <a href="integrationrest.jsp" role="button">
+                    <a href="${pageContext.request.contextPath}/integrationrest.jsp" role="button">
                         Integración REST
                     </a>
                 </li>
@@ -71,7 +71,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><p class="navbar-text">Signed in as ${username}</p></li>
-                <li><a class="navbar-link" href="logoutServlet" role="button">Logout</a></li>
+                <li><a class="navbar-link" href="${pageContext.request.contextPath}/logoutServlet" role="button">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

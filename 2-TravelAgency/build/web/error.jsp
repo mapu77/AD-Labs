@@ -26,7 +26,7 @@
                 <div>    
                     <h1>Something went wrong</h1>
                     <span>${requestScope['javax.servlet.error.message']}</span>
-                    <a class="btn btn-sm pull-right" href="home.jsp">&lt Back</a>
+                    <a class="btn btn-sm pull-right" href="${pageContext.request.contextPath}/home.jsp">&lt Back</a>
                 </div>
             </div>
         </div>
