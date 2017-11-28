@@ -3,9 +3,13 @@ package main
 import (
 	"html/template"
 	"net/http"
+	"routes"
 )
 
 func main() {
+
+	router := routes.GetRouter()
+
 	tmpl := template.Must(template.ParseFiles("forms.html"))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -26,5 +30,5 @@ func main() {
 		tmpl.Execute(w, struct{ Success bool }{true})
 	})
 
-	http.ListenAndServe(":8080", nil)
+	http.Handle("/", router)
 }
