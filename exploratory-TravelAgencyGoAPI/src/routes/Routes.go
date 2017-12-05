@@ -37,6 +37,6 @@ var routes = Routes{
         "GetHotels",
         "GET",
         "/hotels",
-        handlers.ListHotel,
+        handlers.ListHotels,
     },
 }
