@@ -46,10 +46,17 @@ func GetRouter() *mux.Router {
 
 
 	router := mux.NewRouter()
+	router.Handle("/login", appHandler(handlers.LoginHandler)).Methods("GET", "POST")
 	router.Handle("/home", appHandler(handlers.HomeHandler)).Methods("GET")
+	router.Handle("/buscarVuelo", appHandler(handlers.BuscarVueloHandler)).Methods("GET", "POST")
+	router.Handle("/altaVuelo", appHandler(handlers.AltaVueloHandler)).Methods("GET", "POST")
+	router.Handle("/buscarHotel", appHandler(handlers.BuscarHotelHandler)).Methods("GET", "POST")
+	router.Handle("/altaHotel", appHandler(handlers.AltaHotelHandler)).Methods("GET", "POST")
+	router.Handle("/logout", appHandler(handlers.LogoutHandler)).Methods("GET")
 	router.NotFoundHandler = http.HandlerFunc(handlers.NotFoundHandler)
-	router.Handle("/login", appHandler(handlers.LoginHandler))
-	router.Handle("/logout", appHandler(handlers.LogoutHandler))
+
+
+
 
 	return router
 }
