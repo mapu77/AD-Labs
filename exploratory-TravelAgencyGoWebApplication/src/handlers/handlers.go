@@ -157,4 +157,4 @@ func getCookieUsername(w http.ResponseWriter, r *http.Request) (string){
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	return session.Values["username"].(string)
-}
+	}

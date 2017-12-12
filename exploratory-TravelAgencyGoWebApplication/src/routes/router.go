@@ -24,6 +24,8 @@ func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if session.Values["username"] == nil {
 		if r.URL.Path != "/login" {
 			http.Redirect(w, r, "/login", http.StatusSeeOther)
+			//handlers.LoginHandler(w,r)
+			return
 		}
 	}
 	if status, err := fn(w, r); err != nil {
@@ -46,7 +48,7 @@ func GetRouter() *mux.Router {
 
 
 	router := mux.NewRouter()
-	router.Handle("/login", appHandler(handlers.LoginHandler)).Methods("GET", "POST")
+	router.Handle("/login", appHandler(handlers.LoginHandler))
 	router.Handle("/home", appHandler(handlers.HomeHandler)).Methods("GET")
 	router.Handle("/buscarVuelo", appHandler(handlers.BuscarVueloHandler)).Methods("GET", "POST")
 	router.Handle("/altaVuelo", appHandler(handlers.AltaVueloHandler)).Methods("GET", "POST")
@@ -54,9 +56,6 @@ func GetRouter() *mux.Router {
 	router.Handle("/altaHotel", appHandler(handlers.AltaHotelHandler)).Methods("GET", "POST")
 	router.Handle("/logout", appHandler(handlers.LogoutHandler)).Methods("GET")
 	router.NotFoundHandler = http.HandlerFunc(handlers.NotFoundHandler)
-
-
-
 
 	return router
 }
