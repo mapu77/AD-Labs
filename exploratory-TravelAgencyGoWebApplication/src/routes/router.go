@@ -55,6 +55,7 @@ func GetRouter() *mux.Router {
 	router.Handle("/buscarHotel", appHandler(handlers.BuscarHotelHandler)).Methods("GET", "POST")
 	router.Handle("/altaHotel", appHandler(handlers.AltaHotelHandler)).Methods("GET", "POST")
 	router.Handle("/logout", appHandler(handlers.LogoutHandler)).Methods("GET")
+	router.Handle("/apicall/flights", appHandler(handlers.NewFlight)).Methods("POST")
 	router.NotFoundHandler = http.HandlerFunc(handlers.NotFoundHandler)
 
 	return router

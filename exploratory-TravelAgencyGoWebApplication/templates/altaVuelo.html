@@ -13,19 +13,19 @@
                 <h3 class="panel-title">Alta vuelo</h3>
             </div>
             <div class="panel-body container-fluid">
-                <form method="POST" action="${pageContext.request.contextPath}/GestionVuelosServlet">
+                <form method="POST" action="/apicall/flights">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-plane"></span>
-                                    <input type="text" class="form-control" placeholder="Nº Vuelo" name="num_vuelo" required>
+                                    <input type="text" class="form-control" placeholder="Nº Vuelo" name="Code" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
-                                    <input type="text" class="form-control" placeholder="Ciudad origen" name="origen"
+                                    <input type="text" class="form-control" placeholder="Ciudad origen" name="DepartureCity"
                                            required>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-time"></span>
                                     <input type="time" class="form-control" placeholder="Hora de salida"
-                                           name="hora_salida" required>
+                                           name="DepartureTime" required>
                                 </div>
                             </div>
                         </div>
@@ -41,13 +41,13 @@
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-info-sign"></span>
-                                    <input type="text" class="form-control" placeholder="Compañia" name="companyia" required>
+                                    <input type="text" class="form-control" placeholder="Compañia" name="Company" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-pushpin"></span>
-                                    <input type="text" class="form-control" placeholder="Ciudad destino" name="destino"
+                                    <input type="text" class="form-control" placeholder="Ciudad destino" name="ArrivalCity"
                                            required>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                 <div class="input-group">
                                     <span class="input-group-addon glyphicon glyphicon-time"></span>
                                     <input type="time" class="form-control" placeholder="Hora de llegada"
-                                           name="hora_llegada" required>
+                                           name="ArrivalTime" required>
                                 </div>
                             </div>
                             <button class="btn btn-primary pull-right" type="submit">Alta vuelo</button>
