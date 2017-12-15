@@ -6,6 +6,7 @@ import (
 	"net/http"
 	"github.com/gorilla/sessions"
 
+	"fmt"
 )
 
 type appHandler func(http.ResponseWriter, *http.Request) (int, error)
@@ -35,9 +36,11 @@ func (fn appHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		case http.StatusNotFound:
 			handlers.NotFoundHandler(w,r)
 		case http.StatusInternalServerError:
+			fmt.Print("500.......... LEL")
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		default:
 			// Catch any other errors we haven't explicitly handled
+			fmt.Print("4**.......... LEL")
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		}
 	}
@@ -56,6 +59,7 @@ func GetRouter() *mux.Router {
 	router.Handle("/altaHotel", appHandler(handlers.AltaHotelHandler)).Methods("GET", "POST")
 	router.Handle("/logout", appHandler(handlers.LogoutHandler)).Methods("GET")
 	router.Handle("/apicall/flights", appHandler(handlers.NewFlight)).Methods("POST")
+	router.Handle("/apicall/flights", appHandler(handlers.GetFlights)).Methods("GET")
 	router.NotFoundHandler = http.HandlerFunc(handlers.NotFoundHandler)
 
 	return router

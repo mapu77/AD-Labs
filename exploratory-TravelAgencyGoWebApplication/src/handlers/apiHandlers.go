@@ -4,16 +4,24 @@ import (
 	"net/http"
 	"github.com/parnurzeal/gorequest"
 	"fmt"
+	"html/template"
+	"encoding/json"
+
 )
 
 type Flight struct {
+	id			  int `json:"id"`
+	Code          string `json:"Code"`
+	Company       string `json:"Company"`
+	DepartureTime string `json:"DepartureTime"`
+	DepartureCity string `json:"DepartureCity"`
+	ArrivalTime   string `json:"ArrivalTime"`
+	ArrivalCity   string `json:"ArrivalCity"`
+}
 
-	Code          string
-	Company       string
-	DepartureTime string
-	DepartureCity string
-	ArrivalTime   string
-	ArrivalCity   string
+type Return struct {
+	Username string
+	Flights []Flight
 }
 
 func NewFlight(w http.ResponseWriter, r *http.Request) (int, error){
@@ -30,7 +38,37 @@ func NewFlight(w http.ResponseWriter, r *http.Request) (int, error){
 		End()
 	fmt.Print(resp, body, errs)
 	if resp.StatusCode != 500 {
-		http.Redirect(w,r,"/home", http.StatusSeeOther)
+		u := User{ Username: getCookieUsername(w,r)}
+
+		t, _ := template.ParseFiles("templates/success.html", "templates/menu.html")
+		return http.StatusOK, t.ExecuteTemplate(w, "success.html", u)
+
+	} else {
+		return 500, nil
+	}
+	return resp.StatusCode, nil
+}
+
+func GetFlights(w http.ResponseWriter, r *http.Request)(int,error){
+
+	resp, body, errs := gorequest.New().Get("http://127.0.0.1:8081/flights").End()
+	fmt.Print("resp:" , resp)
+	fmt.Print("body:" , body)
+	fmt.Print("errs:" , errs)
+
+	if resp.StatusCode != 500 {
+		var flights []Flight
+		err := json.Unmarshal([]byte(body), &flights)
+		if err != nil {
+			fmt.Print("ERRORRR")
+		}
+		//fmt.Print(flights)
+		u := getCookieUsername(w,r)
+
+		r := Return{Username: u, Flights: flights}
+
+		t, _ := template.ParseFiles("templates/tablaVuelos.html", "templates/menu.html")
+		return http.StatusOK, t.ExecuteTemplate(w, "tablaVuelos.html",r )
 
 	} else {
 		return 500, nil
