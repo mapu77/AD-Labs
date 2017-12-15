@@ -6,11 +6,10 @@ import (
 	"fmt"
 	"html/template"
 	"encoding/json"
-
 )
 
 type Flight struct {
-	id			  int `json:"id"`
+	Id			  string `json:"id"`
 	Code          string `json:"Code"`
 	Company       string `json:"Company"`
 	DepartureTime string `json:"DepartureTime"`

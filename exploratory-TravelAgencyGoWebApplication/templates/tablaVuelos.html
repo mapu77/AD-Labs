@@ -35,15 +35,12 @@
                 {{range $flight := .Flights}}
                     <tr>
                         <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        <td>{{$flight.Id}}</td>
-                        {{/*{range $key, $value := $flight}}
-                            <td>{{$value}}</td>
-                        {{end}}*/}}
+                        <td>{{$flight.Code}}</td>
+                        <td>{{$flight.Company}}</td>
+                        <td>{{$flight.DepartureTime}}</td>
+                        <td>{{$flight.DepartureCity}}</td>
+                        <td>{{$flight.ArrivalTime}}</td>
+                        <td>{{$flight.ArrivalCity}}</td>
                     </tr>
                 {{end}}
                 </tbody>
